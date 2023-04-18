@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-
+    [Header("Componants")]
     [SerializeField] Rigidbody rb;
 
-    [SerializeField] Transform orientation;
-
-    [HideInInspector] public Vector3 MovementDirection;
-
+    [Header("Speed Controls")]
     [SerializeField] float Speed;
     [SerializeField] float maxSpeed;
-
-    bool move;
+    [SerializeField] float minSpeed;
+    [SerializeField] float speedChange;
+    float AppliedSpeed;
     
+    [Header("Turn controls")]
     [SerializeField] float turnSens = 10f;
+    [HideInInspector] public Vector3 MovementDirection;
 
-    float newRotation;
-
+    [Header("Input")]
     float Horizontal;
     float Vertical;
+    float newRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -40,62 +40,42 @@ public class PlayerMove : MonoBehaviour
         if (Horizontal != 0)
         {
             // if there is horizontal input rotate
-
             newRotation += Horizontal * turnSens * Time.deltaTime;
             transform.rotation = Quaternion.Euler(transform.rotation.x, newRotation, transform.rotation.z);
 
             // change the velocity to be in the direction of travel so it wont drift
-            Vector3 newVelocity = rb.velocity.magnitude * orientation.forward;
-            rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z) * Vertical;
-
+            Vector3 newVelocity = rb.velocity.magnitude * transform.forward;
+            rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
         }
-
+        // check for vertical input and change the speed
         if (Vertical != 0) 
         {
-            move = true;
+            if (Vertical > 0) // going forwards
+            {
+                if (Speed < maxSpeed)
+                {
+                    Speed += speedChange * Time.deltaTime;
+                }
+            }
+            else if (Vertical < 0)
+            {
+                // deccellerate when backwards is pressed
+                if (Speed > minSpeed)
+                {
+                    Speed -= speedChange * Time.deltaTime;
+                }
+            }
         }
-        else
-        {
-            move = false;
-        }
-
         // calculate the direction of movement
-
-        MovementDirection = transform.forward * Vertical;
-
-        Debug.Log(Horizontal);
+        MovementDirection = transform.forward;   
     }
 
     private void FixedUpdate()
     {
-        if (move)
-        {
-            rb.drag = 0;
-
-            float topSpeed = maxSpeed;
-
-            // sets the top speed depending on if the player is going forwards or backwards
-            if (Vertical < 0)
-            {
-                 topSpeed = maxSpeed / 2;
-            }
-            else
-            {
-                topSpeed = maxSpeed;
-            }
-
-            Debug.Log(topSpeed);
-
-            // set the maxSpeed
-            if (rb.velocity.magnitude < topSpeed) // if going fowards
-            {
-                rb.AddForce(Vector3.forward + MovementDirection * Speed * Time.fixedDeltaTime, ForceMode.Force);
-            }
-
-        }
-        else
-        {
-            rb.drag = 3f;
-        }
+         // set the maxSpeed
+         if (rb.velocity.magnitude < Speed) // if going fowards
+         {
+            rb.AddForce(Vector3.forward + MovementDirection * AppliedSpeed * Time.fixedDeltaTime, ForceMode.Force);
+         }
     }
 }
