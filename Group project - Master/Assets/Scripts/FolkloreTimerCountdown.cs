@@ -13,7 +13,7 @@ public class FolkloreTimerCountdown : MonoBehaviour
     public int LifeTime = 30;
     private float CurrentTime;
 
-    Animator anim;
+    //Animator anim;
 
     // This boolean makes sure that if the player runs out of time to deliver the Folklore GameObject, the function DeliveryFail() is called once.
     private bool deliveryState = false;
@@ -28,7 +28,7 @@ public class FolkloreTimerCountdown : MonoBehaviour
 
         TimerText = transform.GetChild(0).GetComponent<TextMeshProUGUI>(); // This automatically finds the first child in the Canvas - the TextMeshProUGui. This is great for instantiating!
 
-        anim = transform.GetChild(0).GetComponent<Animator>(); // This is used to add a little shake to the TextMeshProUGui when the timer reaches below 10.
+        //anim = transform.GetChild(0).GetComponent<Animator>(); // This is used to add a little shake to the TextMeshProUGui when the timer reaches below 10.
     }
 
     void Update()
@@ -40,7 +40,7 @@ public class FolkloreTimerCountdown : MonoBehaviour
             if (CurrentTime <= 0)
             {
                 CurrentTime = 0;
-                anim.SetTrigger("Fade"); // Fade out animation.
+                //anim.SetTrigger("Fade"); // Fade out animation.
                 DeliveryFail();
             }
             else // Run this code if the timer has not reached 0!
@@ -58,7 +58,7 @@ public class FolkloreTimerCountdown : MonoBehaviour
         // If the timer is below 10, begin to shake!
         if(Mathf.Round(CurrentTime) <= 10)
         {
-            anim.SetTrigger("Shake"); // Shake animation.
+            //anim.SetTrigger("Shake"); // Shake animation.
         }
     }
 
