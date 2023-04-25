@@ -10,6 +10,8 @@ public class CollectFolklore : MonoBehaviour
 
     [SerializeField] float randomFolklore;
     [SerializeField] float newfolkloreIndex;
+    public GameObject Customer;
+    public Transform defaultSpawn;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,9 @@ public class CollectFolklore : MonoBehaviour
             PlayerInventory.hasFolklore = true;
             // store the index of the folklore that the player has in the inventory
             PlayerInventory.folkloreIndex = newfolkloreIndex;
+
+            //Instantiate the customer.
+            Instantiate(Customer, defaultSpawn);
 
             Destroy(gameObject);
         }
