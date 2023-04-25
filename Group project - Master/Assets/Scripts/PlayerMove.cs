@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float Speed;
     [SerializeField] float maxSpeed;
     [SerializeField] float minSpeed;
-    [SerializeField] float speedChange;
+    [SerializeField] float speedChange = 5;
     float AppliedSpeed;
     
     [Header("Turn controls")]
@@ -36,9 +36,15 @@ public class PlayerMove : MonoBehaviour
         Horizontal = Input.GetAxisRaw("Horizontal");
         Vertical = Input.GetAxisRaw("Vertical");
 
+        if (Horizontal == 0)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeRotationY;
+        }
+
         // change rotation of cart when going left or right
         if (Horizontal != 0)
         {
+            rb.constraints = RigidbodyConstraints.None;
             // if there is horizontal input rotate
             newRotation += Horizontal * turnSens * Time.deltaTime;
             transform.rotation = Quaternion.Euler(transform.rotation.x, newRotation, transform.rotation.z);
@@ -75,7 +81,13 @@ public class PlayerMove : MonoBehaviour
          // set the maxSpeed
          if (rb.velocity.magnitude < Speed) // if going fowards
          {
-            rb.AddForce(Vector3.forward + MovementDirection * AppliedSpeed * Time.fixedDeltaTime, ForceMode.Force);
+            rb.drag = 0f;
+            AppliedSpeed = Speed * 500;
+            rb.AddForce((/*Vector3.forward */MovementDirection) * AppliedSpeed * Time.fixedDeltaTime, ForceMode.Force);
+         }
+         else if (rb.velocity.magnitude > Speed)
+         {
+            rb.drag = 5f;
          }
     }
 }
