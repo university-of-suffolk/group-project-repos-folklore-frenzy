@@ -83,7 +83,7 @@ public class PlayerMove : MonoBehaviour
          {
             rb.drag = 0f;
             AppliedSpeed = Speed * 500;
-            rb.AddForce((/*Vector3.forward */MovementDirection) * AppliedSpeed * Time.fixedDeltaTime, ForceMode.Force);
+            rb.AddForce(MovementDirection * AppliedSpeed * Time.fixedDeltaTime, ForceMode.Force);
          }
          else if (rb.velocity.magnitude > Speed)
          {
