@@ -60,7 +60,7 @@ public class CollectFolklore : MonoBehaviour
             // store the index of the folklore that the player has in the inventory
             PlayerInventory.folkloreIndex = newfolkloreIndex;
 
-            Destroy(gameObject.transform.parent.gameObject);
+            Destroy(gameObject);
         }
     }
 }
