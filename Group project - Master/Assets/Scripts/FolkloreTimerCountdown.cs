@@ -11,7 +11,7 @@ public class FolkloreTimerCountdown : MonoBehaviour
     public TextMeshProUGUI TimerText;
     [Header("Time Values")]
     public int LifeTime = 30;
-    private float CurrentTime;
+    public float CurrentTime;
 
     //Animator anim;
 
@@ -19,10 +19,13 @@ public class FolkloreTimerCountdown : MonoBehaviour
     private bool deliveryState = false;
 
     // This boolean is used to freeze the timer when the player makes a successful delivery.
-    private bool freezeTimer = false;
+    private bool freezeTimer;
 
     void Start()
     {
+        // The timer starts invisible and frozen. It should only run when the folklore is equipped.
+        freezeTimer = true;
+
         // This starts the Folklore GameObject with the timer reset at LifeTime (30s).
         CurrentTime = LifeTime;
 
@@ -36,6 +39,9 @@ public class FolkloreTimerCountdown : MonoBehaviour
         // The timer should only continue to decrement and fail the player if the delivery has not been made.
         if (!freezeTimer)
         {
+            // If the timer is running, then the timer text should be visible.
+            TimerText.gameObject.SetActive(true);
+
             // If the timer reaches 0, freeze the timer!
             if (CurrentTime <= 0)
             {
@@ -50,9 +56,10 @@ public class FolkloreTimerCountdown : MonoBehaviour
                 UpdateTimer();
             }
         }
-        else // The timer has frozen, meaning the player has made the delivery!
+        else
         {
-            DeliverySuccess();
+            // If the timer is frozen, then the timer text should be invisible.
+            TimerText.gameObject.SetActive(false);
         }
 
         // If the timer is below 10, begin to shake!
@@ -60,6 +67,22 @@ public class FolkloreTimerCountdown : MonoBehaviour
         {
             //anim.SetTrigger("Shake"); // Shake animation.
         }
+
+        // DEV TOOLS: Press enter to start/stop timer.
+        if (Input.GetKeyDown("return"))
+        {
+            if (freezeTimer)
+            {
+                Debug.Log("Timer manually started!");
+                freezeTimer = false;
+            }
+            else
+            {
+                Debug.Log("Timer manually frozen!");
+                freezeTimer = true;
+            }
+        }
+
     }
 
     // This function updates the timer UI text.
@@ -78,6 +101,7 @@ public class FolkloreTimerCountdown : MonoBehaviour
         }
     }
 
+    /*
     void DeliverySuccess()
     {
         if (!deliveryState)
@@ -86,4 +110,5 @@ public class FolkloreTimerCountdown : MonoBehaviour
             Debug.Log("The current Folklore GameObject " + gameObject.transform.parent.name + " was delivered successfully!");
         }
     }
+    */
 }
