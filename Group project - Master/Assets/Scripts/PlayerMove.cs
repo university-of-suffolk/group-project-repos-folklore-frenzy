@@ -6,13 +6,19 @@ public class PlayerMove : MonoBehaviour
 {
     [Header("Componants")]
     [SerializeField] Rigidbody rb;
+    [SerializeField] LayerMask building;
+    bool hitBuilding;
 
     [Header("Speed Controls")]
     [SerializeField] float Speed;
     [SerializeField] float maxSpeed;
     [SerializeField] float minSpeed;
     [SerializeField] float speedChange = 5;
+
+    [SerializeField] float pushbackForce;
+
     float AppliedSpeed;
+    [SerializeField] bool freezeTurn;
     
     [Header("Turn controls")]
     [SerializeField] float turnSens = 10f;
@@ -32,6 +38,9 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        hitBuilding = Physics.Raycast(transform.position, transform.forward, 1f, building);
+
+
         // get directional input
         Horizontal = Input.GetAxisRaw("Horizontal");
         Vertical = Input.GetAxisRaw("Vertical");
@@ -42,8 +51,9 @@ public class PlayerMove : MonoBehaviour
         }
 
         // change rotation of cart when going left or right
-        if (Horizontal != 0)
+        if (Horizontal != 0 && !freezeTurn)
         {
+            print("Turning");
             rb.constraints = RigidbodyConstraints.None;
             // if there is horizontal input rotate
             newRotation += Horizontal * turnSens * Time.deltaTime;
@@ -78,16 +88,43 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-         // set the maxSpeed
-         if (rb.velocity.magnitude < Speed) // if going fowards
-         {
+        if (!hitBuilding)
+        {
+            // set the maxSpeed
+            if (rb.velocity.magnitude < Speed) // if going fowards
+            {
+                rb.drag = 0f; // remove the drag so the player can affectivly accelerate
+                AppliedSpeed = Speed * 500;
+                rb.AddForce(MovementDirection * AppliedSpeed * Time.fixedDeltaTime, ForceMode.Force); // apply the forwards force.
+            }
+            else if (rb.velocity.magnitude > Speed) // if slowing down apply drag to do it gradually.
+            {
+                rb.drag = 5f;
+            }
+        }
+        else // turning off foward force, to cleanly apply the bouceback when the player collides with an obstacle.
+        {
+            print("collided with building");
+            freezeTurn = true;
             rb.drag = 0f;
-            AppliedSpeed = Speed * 500;
-            rb.AddForce(MovementDirection * AppliedSpeed * Time.fixedDeltaTime, ForceMode.Force);
-         }
-         else if (rb.velocity.magnitude > Speed)
-         {
-            rb.drag = 5f;
-         }
+            Speed /= 4; // lower speed to give the player a chance to correct their mistake without bouncing them off the same wall repeatedly.
+
+            //rb.velocity = Vector3.zero;
+            rb.AddForce(MovementDirection * -1 * pushbackForce * 500f * Time.fixedDeltaTime, ForceMode.Force); // applies force backwards to get players unstuck.
+            Invoke("unfreezeTurn", 0.2f /** Time.fixedDeltaTime*/); // unfreeze the rotate (avoiding the player jittering against the obstacle)
+        }
+        
+    }
+
+    private void unfreezeTurn()
+    {
+        print("Unfreezing turn");
+        freezeTurn = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * 1f);
     }
 }
