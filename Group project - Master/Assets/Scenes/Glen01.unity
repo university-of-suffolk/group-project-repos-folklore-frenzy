@@ -3625,7 +3625,7 @@ MonoBehaviour:
   speedChange: 5
   pushbackForce: 100
   freezeTurn: 0
-  turnSens: 100
+  turnSens: 50
   MovementDirection: {x: 0, y: 0, z: 0}
 --- !u!54 &1351850128
 Rigidbody:

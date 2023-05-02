@@ -93,6 +93,7 @@ public class PlayerMove : MonoBehaviour
             // set the maxSpeed
             if (rb.velocity.magnitude < Speed) // if going fowards
             {
+                Debug.Log("Applying forward force");
                 rb.drag = 0f; // remove the drag so the player can affectivly accelerate
                 AppliedSpeed = Speed * 500;
                 rb.AddForce(MovementDirection * AppliedSpeed * Time.fixedDeltaTime, ForceMode.Force); // apply the forwards force.
@@ -106,12 +107,13 @@ public class PlayerMove : MonoBehaviour
         {
             print("collided with building");
             freezeTurn = true;
+            rb.constraints = RigidbodyConstraints.FreezeRotationY;
             rb.drag = 0f;
-            Speed /= 4; // lower speed to give the player a chance to correct their mistake without bouncing them off the same wall repeatedly.
+            Speed = 5; // lower speed to give the player a chance to correct their mistake without bouncing them off the same wall repeatedly.
 
             //rb.velocity = Vector3.zero;
             rb.AddForce(MovementDirection * -1 * pushbackForce * 500f * Time.fixedDeltaTime, ForceMode.Force); // applies force backwards to get players unstuck.
-            Invoke("unfreezeTurn", 0.2f /** Time.fixedDeltaTime*/); // unfreeze the rotate (avoiding the player jittering against the obstacle)
+            Invoke("unfreezeTurn", 0.35f /** Time.fixedDeltaTime*/); // unfreeze the rotate (avoiding the player jittering against the obstacle)
         }
         
     }
@@ -120,6 +122,7 @@ public class PlayerMove : MonoBehaviour
     {
         print("Unfreezing turn");
         freezeTurn = false;
+        rb.constraints = RigidbodyConstraints.None;
     }
 
     private void OnDrawGizmos()

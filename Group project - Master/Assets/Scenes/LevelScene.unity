@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 672aede721d7e854399eba945b7c1d8a, type: 2}
 --- !u!1 &55012922
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,12 +135,12 @@ GameObject:
   - component: {fileID: 55012926}
   - component: {fileID: 55012925}
   - component: {fileID: 55012924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &55012923
 Transform:
@@ -382,12 +382,12 @@ GameObject:
   - component: {fileID: 87213040}
   - component: {fileID: 87213039}
   - component: {fileID: 87213038}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &87213037
 Transform:
@@ -479,12 +479,12 @@ GameObject:
   - component: {fileID: 92265159}
   - component: {fileID: 92265158}
   - component: {fileID: 92265157}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &92265156
 Transform:
@@ -638,12 +638,12 @@ GameObject:
   - component: {fileID: 144738818}
   - component: {fileID: 144738817}
   - component: {fileID: 144738816}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &144738815
 Transform:
@@ -789,7 +789,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &197925394
 GameObject:
@@ -823,7 +823,7 @@ Transform:
   - {fileID: 138280796}
   - {fileID: 434322628}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &209688308
 GameObject:
@@ -837,12 +837,12 @@ GameObject:
   - component: {fileID: 209688312}
   - component: {fileID: 209688311}
   - component: {fileID: 209688310}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &209688309
 Transform:
@@ -934,12 +934,12 @@ GameObject:
   - component: {fileID: 272659580}
   - component: {fileID: 272659579}
   - component: {fileID: 272659578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &272659577
 Transform:
@@ -1062,12 +1062,12 @@ GameObject:
   - component: {fileID: 322493308}
   - component: {fileID: 322493307}
   - component: {fileID: 322493306}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &322493305
 Transform:
@@ -1190,12 +1190,12 @@ GameObject:
   - component: {fileID: 400576758}
   - component: {fileID: 400576757}
   - component: {fileID: 400576756}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &400576755
 Transform:
@@ -1287,12 +1287,12 @@ GameObject:
   - component: {fileID: 403775524}
   - component: {fileID: 403775523}
   - component: {fileID: 403775522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &403775521
 Transform:
@@ -1415,12 +1415,12 @@ GameObject:
   - component: {fileID: 452494765}
   - component: {fileID: 452494764}
   - component: {fileID: 452494763}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &452494762
 Transform:
@@ -1512,12 +1512,12 @@ GameObject:
   - component: {fileID: 456502366}
   - component: {fileID: 456502365}
   - component: {fileID: 456502364}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &456502363
 Transform:
@@ -1606,7 +1606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 488156705}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BuidlingHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1648,12 +1648,12 @@ GameObject:
   - component: {fileID: 535624677}
   - component: {fileID: 535624676}
   - component: {fileID: 535624675}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &535624674
 Transform:
@@ -1745,12 +1745,12 @@ GameObject:
   - component: {fileID: 539718225}
   - component: {fileID: 539718224}
   - component: {fileID: 539718223}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &539718222
 Transform:
@@ -1977,12 +1977,12 @@ GameObject:
   - component: {fileID: 617075693}
   - component: {fileID: 617075692}
   - component: {fileID: 617075691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &617075690
 Transform:
@@ -2154,7 +2154,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &696328136
 GameObject:
@@ -2199,12 +2199,12 @@ GameObject:
   - component: {fileID: 715235406}
   - component: {fileID: 715235405}
   - component: {fileID: 715235404}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &715235403
 Transform:
@@ -2314,7 +2314,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &757647328
 MonoBehaviour:
@@ -2373,12 +2373,12 @@ GameObject:
   - component: {fileID: 878643271}
   - component: {fileID: 878643270}
   - component: {fileID: 878643269}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &878643268
 Transform:
@@ -2470,12 +2470,12 @@ GameObject:
   - component: {fileID: 893551288}
   - component: {fileID: 893551287}
   - component: {fileID: 893551286}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &893551285
 Transform:
@@ -2660,7 +2660,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &898371162
 MonoBehaviour:
@@ -2687,12 +2687,12 @@ GameObject:
   - component: {fileID: 910443661}
   - component: {fileID: 910443660}
   - component: {fileID: 910443659}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &910443658
 Transform:
@@ -2784,12 +2784,12 @@ GameObject:
   - component: {fileID: 912661775}
   - component: {fileID: 912661774}
   - component: {fileID: 912661773}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &912661772
 Transform:
@@ -2881,12 +2881,12 @@ GameObject:
   - component: {fileID: 918710063}
   - component: {fileID: 918710062}
   - component: {fileID: 918710061}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &918710060
 Transform:
@@ -2978,12 +2978,12 @@ GameObject:
   - component: {fileID: 958464671}
   - component: {fileID: 958464670}
   - component: {fileID: 958464669}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &958464668
 Transform:
@@ -3072,7 +3072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1005218799}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BuidlingHolder (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3141,7 +3141,7 @@ Transform:
   - {fileID: 1642277303}
   - {fileID: 1334656220}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111490795
 GameObject:
@@ -3318,7 +3318,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1193291454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BuidlingHolder (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3360,12 +3360,12 @@ GameObject:
   - component: {fileID: 1206716988}
   - component: {fileID: 1206716987}
   - component: {fileID: 1206716986}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1206716985
 Transform:
@@ -3542,7 +3542,7 @@ RectTransform:
   - {fileID: 1322157864}
   - {fileID: 79503855}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3575,12 +3575,12 @@ GameObject:
   - component: {fileID: 1210996196}
   - component: {fileID: 1210996195}
   - component: {fileID: 1210996194}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1210996193
 Transform:
@@ -3703,12 +3703,12 @@ GameObject:
   - component: {fileID: 1268323167}
   - component: {fileID: 1268323166}
   - component: {fileID: 1268323165}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1268323164
 Transform:
@@ -3800,12 +3800,12 @@ GameObject:
   - component: {fileID: 1303628462}
   - component: {fileID: 1303628461}
   - component: {fileID: 1303628460}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1303628459
 Transform:
@@ -3928,12 +3928,12 @@ GameObject:
   - component: {fileID: 1311147951}
   - component: {fileID: 1311147950}
   - component: {fileID: 1311147949}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1311147948
 Transform:
@@ -4025,12 +4025,12 @@ GameObject:
   - component: {fileID: 1311624153}
   - component: {fileID: 1311624152}
   - component: {fileID: 1311624151}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1311624150
 Transform:
@@ -4289,7 +4289,8 @@ GameObject:
   - component: {fileID: 1351850124}
   - component: {fileID: 1351850123}
   - component: {fileID: 1351850128}
-  - component: {fileID: 1351850127}
+  - component: {fileID: 1351850129}
+  - component: {fileID: 1351850131}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4375,27 +4376,8 @@ Transform:
   - {fileID: 2025438634}
   - {fileID: 1665808413}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1351850127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351850122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2694cee895016448945486b739f16c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 1351850128}
-  Speed: 6
-  maxSpeed: 10
-  minSpeed: 0
-  speedChange: 5
-  turnSens: 20
-  MovementDirection: {x: 0, y: 0, z: 0}
 --- !u!54 &1351850128
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4412,6 +4394,52 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!195 &1351850129
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351850122}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1351850131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351850122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2694cee895016448945486b739f16c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1351850128}
+  building:
+    serializedVersion: 2
+    m_Bits: 192
+  Speed: 10
+  maxSpeed: 15
+  minSpeed: 5
+  speedChange: 5
+  pushbackForce: 150
+  freezeTurn: 0
+  turnSens: 75
+  MovementDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &1364973914
 GameObject:
   m_ObjectHideFlags: 0
@@ -4424,12 +4452,12 @@ GameObject:
   - component: {fileID: 1364973918}
   - component: {fileID: 1364973917}
   - component: {fileID: 1364973916}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1364973915
 Transform:
@@ -4521,12 +4549,12 @@ GameObject:
   - component: {fileID: 1374929273}
   - component: {fileID: 1374929272}
   - component: {fileID: 1374929271}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1374929270
 Transform:
@@ -4618,12 +4646,12 @@ GameObject:
   - component: {fileID: 1400056265}
   - component: {fileID: 1400056264}
   - component: {fileID: 1400056263}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1400056262
 Transform:
@@ -4720,7 +4748,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &1418837933
 MeshCollider:
@@ -4799,7 +4827,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1437546298
 GameObject:
@@ -4813,12 +4841,12 @@ GameObject:
   - component: {fileID: 1437546302}
   - component: {fileID: 1437546301}
   - component: {fileID: 1437546300}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1437546299
 Transform:
@@ -4933,7 +4961,7 @@ Transform:
   - {fileID: 1193291454}
   - {fileID: 1005218799}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1445983519
 GameObject:
@@ -4944,7 +4972,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1445983520}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BuidlingHolder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4986,12 +5014,12 @@ GameObject:
   - component: {fileID: 1473421400}
   - component: {fileID: 1473421399}
   - component: {fileID: 1473421398}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1473421397
 Transform:
@@ -5083,12 +5111,12 @@ GameObject:
   - component: {fileID: 1504802701}
   - component: {fileID: 1504802700}
   - component: {fileID: 1504802699}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1504802698
 Transform:
@@ -5180,12 +5208,12 @@ GameObject:
   - component: {fileID: 1570715638}
   - component: {fileID: 1570715637}
   - component: {fileID: 1570715636}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1570715635
 Transform:
@@ -5277,12 +5305,12 @@ GameObject:
   - component: {fileID: 1601697648}
   - component: {fileID: 1601697647}
   - component: {fileID: 1601697646}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1601697645
 Transform:
@@ -5553,12 +5581,12 @@ GameObject:
   - component: {fileID: 1767197689}
   - component: {fileID: 1767197688}
   - component: {fileID: 1767197687}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1767197686
 Transform:
@@ -5650,12 +5678,12 @@ GameObject:
   - component: {fileID: 1800224381}
   - component: {fileID: 1800224380}
   - component: {fileID: 1800224379}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1800224378
 Transform:
@@ -5778,12 +5806,12 @@ GameObject:
   - component: {fileID: 1816789497}
   - component: {fileID: 1816789496}
   - component: {fileID: 1816789495}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1816789494
 Transform:
@@ -5875,12 +5903,12 @@ GameObject:
   - component: {fileID: 1861590749}
   - component: {fileID: 1861590748}
   - component: {fileID: 1861590747}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1861590746
 Transform:
@@ -5969,7 +5997,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1879169033}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BuidlingHolder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6011,12 +6039,12 @@ GameObject:
   - component: {fileID: 1921581154}
   - component: {fileID: 1921581153}
   - component: {fileID: 1921581152}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1921581151
 Transform:
@@ -6173,12 +6201,12 @@ GameObject:
   - component: {fileID: 1943419263}
   - component: {fileID: 1943419262}
   - component: {fileID: 1943419261}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1943419260
 Transform:
@@ -6301,7 +6329,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1981694735
 GameObject:
@@ -6315,12 +6343,12 @@ GameObject:
   - component: {fileID: 1981694739}
   - component: {fileID: 1981694738}
   - component: {fileID: 1981694737}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1981694736
 Transform:
@@ -6412,12 +6440,12 @@ GameObject:
   - component: {fileID: 1982123836}
   - component: {fileID: 1982123835}
   - component: {fileID: 1982123834}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1982123833
 Transform:
@@ -6560,7 +6588,7 @@ Transform:
   - {fileID: 825841059}
   - {fileID: 284039872}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2017293532
 GameObject:
@@ -6574,12 +6602,12 @@ GameObject:
   - component: {fileID: 2017293536}
   - component: {fileID: 2017293535}
   - component: {fileID: 2017293534}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2017293533
 Transform:
@@ -6668,7 +6696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2020847417}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BuidlingHolder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6782,6 +6810,63 @@ Transform:
   m_Father: {fileID: 1351850126}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2055167229
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6927299559786924217, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
+      propertyPath: m_Name
+      value: Pedestrian
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927299559786924221, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927299559786924221, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6911852
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927299559786924221, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0000038
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927299559786924221, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 27.465908
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927299559786924221, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927299559786924221, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927299559786924221, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927299559786924221, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927299559786924221, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927299559786924221, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927299559786924221, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 05c5307c994049e4f95c6f193c645ccf, type: 3}
 --- !u!1 &2102078588
 GameObject:
   m_ObjectHideFlags: 0
@@ -6794,12 +6879,12 @@ GameObject:
   - component: {fileID: 2102078592}
   - component: {fileID: 2102078591}
   - component: {fileID: 2102078590}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2102078589
 Transform:
@@ -6891,12 +6976,12 @@ GameObject:
   - component: {fileID: 2105431673}
   - component: {fileID: 2105431672}
   - component: {fileID: 2105431671}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2105431670
 Transform:
@@ -6988,12 +7073,12 @@ GameObject:
   - component: {fileID: 2113419206}
   - component: {fileID: 2113419205}
   - component: {fileID: 2113419204}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2113419203
 Transform:
@@ -7085,12 +7170,12 @@ GameObject:
   - component: {fileID: 2135032153}
   - component: {fileID: 2135032152}
   - component: {fileID: 2135032151}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2135032150
 Transform:
