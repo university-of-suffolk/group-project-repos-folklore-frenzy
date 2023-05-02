@@ -131,7 +131,6 @@ MonoBehaviour:
   randomFolklore: 0
   newfolkloreIndex: 0
   Customer: {fileID: 5000196539065162594, guid: 493d9a381f634704c8ca2056a6ddcf45, type: 3}
-  defaultSpawn: {fileID: 0}
 --- !u!1 &4243437606907427851
 GameObject:
   m_ObjectHideFlags: 0

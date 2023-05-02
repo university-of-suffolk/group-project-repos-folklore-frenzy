@@ -13,7 +13,7 @@ public class TimerCountdown : MonoBehaviour
     public int StartingTime = 180;
     private float CurrentTime;
 
-    // This boolean makes sure that when the round is over, the function RoundOver() is called once.
+    // This boolean is used to determine when the round is over.
     private bool roundOver = false;
 
     private void Start()

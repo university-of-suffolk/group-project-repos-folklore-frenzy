@@ -13,10 +13,9 @@ public class FolkloreTimerCountdown : MonoBehaviour
     public int LifeTime = 30;
     public float CurrentTime;
 
-    //Animator anim;
 
     // This boolean makes sure that if the player runs out of time to deliver the Folklore GameObject, the function DeliveryFail() is called once.
-    private bool deliveryState = false;
+    public static bool deliveryFailed = false;
 
     // This boolean is used to freeze the timer when the player makes a successful delivery.
     private bool freezeTimer;
@@ -30,23 +29,28 @@ public class FolkloreTimerCountdown : MonoBehaviour
         CurrentTime = LifeTime;
 
         TimerText = transform.GetChild(0).GetComponent<TextMeshProUGUI>(); // This automatically finds the first child in the Canvas - the TextMeshProUGui. This is great for instantiating!
-
-        //anim = transform.GetChild(0).GetComponent<Animator>(); // This is used to add a little shake to the TextMeshProUGui when the timer reaches below 10.
     }
 
     void Update()
     {
+        if(PlayerInventory.hasFolklore == true)
+        {
+            freezeTimer = false; // Timer starts ticking!                      
+            TimerText.gameObject.SetActive(true);
+        }
+        else
+        {
+            freezeTimer = true; // Timer stops ticking as player does not have the folklore anymore...
+            CurrentTime = LifeTime; // The timer is reset.
+        }
+
         // The timer should only continue to decrement and fail the player if the delivery has not been made.
         if (!freezeTimer)
         {
-            // If the timer is running, then the timer text should be visible.
-            TimerText.gameObject.SetActive(true);
-
             // If the timer reaches 0, freeze the timer!
             if (CurrentTime <= 0)
             {
                 CurrentTime = 0;
-                //anim.SetTrigger("Fade"); // Fade out animation.
                 DeliveryFail();
             }
             else // Run this code if the timer has not reached 0!
@@ -68,21 +72,6 @@ public class FolkloreTimerCountdown : MonoBehaviour
             //anim.SetTrigger("Shake"); // Shake animation.
         }
 
-        // DEV TOOLS: Press enter to start/stop timer.
-        if (Input.GetKeyDown("return"))
-        {
-            if (freezeTimer)
-            {
-                Debug.Log("Timer manually started!");
-                freezeTimer = false;
-            }
-            else
-            {
-                Debug.Log("Timer manually frozen!");
-                freezeTimer = true;
-            }
-        }
-
     }
 
     // This function updates the timer UI text.
@@ -94,21 +83,11 @@ public class FolkloreTimerCountdown : MonoBehaviour
     // This function is called when the player fails to make the delivery in time.
     void DeliveryFail()
     {
-        if (!deliveryState)
+        if (!deliveryFailed)
         {
-            deliveryState = true;
-            Debug.Log("The current Folklore GameObject " + gameObject.transform.parent.name + " was delivered unsuccessfully!");
+            deliveryFailed = true;
+            Debug.Log("The current Folklore was delivered unsuccessfully!");
+            PlayerInventory.hasFolklore = false; // The player loses their folklore privelleges, which resets the timer.
         }
     }
-
-    /*
-    void DeliverySuccess()
-    {
-        if (!deliveryState)
-        {
-            deliveryState = true;
-            Debug.Log("The current Folklore GameObject " + gameObject.transform.parent.name + " was delivered successfully!");
-        }
-    }
-    */
 }

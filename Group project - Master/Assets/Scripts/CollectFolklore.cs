@@ -11,13 +11,26 @@ public class CollectFolklore : MonoBehaviour
     [SerializeField] float randomFolklore;
     [SerializeField] float newfolkloreIndex;
     public GameObject Customer;
-    public Transform defaultSpawn;
+    GameObject customerSpawnLocations;
+    Transform defaultSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Random Customer Spawn Locations //
+
+        customerSpawnLocations = GameObject.Find("CustomerSpawnLocations"); // Finds the GameObject storing customer spawn locations.
+
+        int randomCustomerPos = Random.Range(0, 3); // 3* Possible Locations (3 Empty Child GameObjects)
+
+        // This takes the random number, and finds the selected array from the Empty GameObjects inside of the customerSpawnLocations GameObject (e.g., The highest Child GameObject is represented as [0]). The default spawn is then selected from the array.
+        defaultSpawn = customerSpawnLocations.transform.GetChild(randomCustomerPos);
+
         // get random which folklore it is based on the % chance  ( Generate a 1 - 100 number)
         randomFolklore = Random.Range(1, 101);
+
+
+        // Set Folklore //
 
         if (randomFolklore < 51)
         {
