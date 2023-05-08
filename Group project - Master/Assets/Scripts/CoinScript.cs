@@ -43,6 +43,7 @@ public class CoinScript : MonoBehaviour
             {
                 coinCollected = true;
 
+                Debug.Log(coinValue);
                 ScoreManager.currentScore += coinValue;
 
                 audioSource.PlayOneShot(coinSFX);

@@ -29,6 +29,8 @@ public class PlayerMove : MonoBehaviour
     float Vertical;
     float newRotation;
 
+    bool scoreChanged = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,10 +42,13 @@ public class PlayerMove : MonoBehaviour
     {
         hitBuilding = Physics.Raycast(transform.position, transform.forward, 1f, building);
 
-
-        // get directional input
-        Horizontal = Input.GetAxisRaw("Horizontal");
-        Vertical = Input.GetAxisRaw("Vertical");
+        // Only get the player input when the game is not paused. (I.e., the player can't move while paused)
+        if (!PauseManager.isPaused)
+        {
+            // get directional input
+            Horizontal = Input.GetAxisRaw("Horizontal");
+            Vertical = Input.GetAxisRaw("Vertical");
+        }
 
         if (Horizontal == 0)
         {
@@ -113,6 +118,14 @@ public class PlayerMove : MonoBehaviour
 
             //rb.velocity = Vector3.zero;
             rb.AddForce(MovementDirection * -1 * pushbackForce * 500f * Time.fixedDeltaTime, ForceMode.Force); // applies force backwards to get players unstuck.
+
+            // Decrease score on collision.
+            if (!scoreChanged)
+            {
+                scoreChanged = true;
+                ScoreManager.currentScore -= 100;
+            }
+
             Invoke("unfreezeTurn", 0.35f /** Time.fixedDeltaTime*/); // unfreeze the rotate (avoiding the player jittering against the obstacle)
         }
         
@@ -123,6 +136,7 @@ public class PlayerMove : MonoBehaviour
         print("Unfreezing turn");
         freezeTurn = false;
         rb.constraints = RigidbodyConstraints.None;
+        scoreChanged = false; // Player will lose money again on next collision.
     }
 
     private void OnDrawGizmos()
