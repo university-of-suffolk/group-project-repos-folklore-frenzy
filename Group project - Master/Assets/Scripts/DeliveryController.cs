@@ -8,10 +8,12 @@ public class DeliveryController : MonoBehaviour
     [SerializeField] float orderIndex;
 
     GameObject folkloreSpawner;
+    GameObject hintArrowObject;
 
     private void Start()
     {
         folkloreSpawner = GameObject.Find("Folklore Spawner");
+        hintArrowObject = GameObject.Find("HintArrow");
 
         // determine which folklore the customer wants.
         orderIndex = PlayerInventory.folkloreIndex;
@@ -56,6 +58,7 @@ public class DeliveryController : MonoBehaviour
                 }
 
                 // destroy customer after transaction
+                Destroy(hintArrowObject);
                 Destroy(transform.parent.gameObject);
                 folkloreSpawner.GetComponent<SpawnFolklore>().Spawn(); // Spawn new folklore!
             }
@@ -63,6 +66,7 @@ public class DeliveryController : MonoBehaviour
             {
                 ScoreManager.currentScore -= 200f;
                 folkloreSpawner.GetComponent<SpawnFolklore>().Spawn(); // Spawn new folklore!
+                Destroy(hintArrowObject);
                 Destroy(transform.parent.gameObject);
             }
 

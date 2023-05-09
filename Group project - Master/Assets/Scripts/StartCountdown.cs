@@ -17,6 +17,8 @@ public class StartCountdown : MonoBehaviour
     public AudioSource musicAudioSource;
     [Tooltip("This is for testing! Music will probably not be played from this object in the future.")]
     public AudioClip bgMusic;
+
+    public static bool gameStarted = false;
     private void Awake()
     {
         Active(true); // This function is used to show/hide the countdown UI.
@@ -47,6 +49,7 @@ public class StartCountdown : MonoBehaviour
         
         // The countdown has ticked down to zero! 
         Time.timeScale = 1f; // UNPAUSES the game.
+        gameStarted = true;
         Active(false); // Hides the countdown UI.
 
         // --> This is where we can add a function to play background music in our game! <-- //
