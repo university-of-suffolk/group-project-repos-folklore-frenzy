@@ -53,6 +53,20 @@ public class TimerCountdown : MonoBehaviour
         {
             roundOver = true;
             Debug.Log("The timer has run out and the round is over!"); 
+
+            // Checking if there is a saved highscore, if there is then compare with the current score. If it is beaten, save the new highscore over the old.
+            if (PlayerPrefs.HasKey("Highscore"))
+            {
+                float currentHighscore = PlayerPrefs.GetFloat("Highscore");
+                if (ScoreManager.currentScore > currentHighscore)
+                {
+                    PlayerPrefs.SetFloat("Highscore", ScoreManager.currentScore);
+                }
+            }
+            else // saves the highscore if there is no save data.
+            {
+                PlayerPrefs.SetFloat("Highscore", ScoreManager.currentScore);
+            }
         }
     }
 }
