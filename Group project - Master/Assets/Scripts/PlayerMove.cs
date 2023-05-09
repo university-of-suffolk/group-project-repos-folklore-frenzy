@@ -19,6 +19,8 @@ public class PlayerMove : MonoBehaviour
 
     float AppliedSpeed;
     [SerializeField] bool freezeTurn;
+
+    [SerializeField] Vector3 reboundDirection;
     
     [Header("Turn controls")]
     [SerializeField] float turnSens = 10f;
@@ -40,8 +42,6 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hitBuilding = Physics.Raycast(transform.position, transform.forward, 1f, building);
-
         // Only get the player input when the game is not paused. (I.e., the player can't move while paused)
         if (!PauseManager.isPaused)
         {
@@ -113,11 +113,13 @@ public class PlayerMove : MonoBehaviour
             print("collided with building");
             freezeTurn = true;
             rb.constraints = RigidbodyConstraints.FreezeRotationY;
+            rb.constraints = RigidbodyConstraints.FreezeRotationX;
+            rb.constraints = RigidbodyConstraints.FreezeRotationZ;
             rb.drag = 0f;
             Speed = 5; // lower speed to give the player a chance to correct their mistake without bouncing them off the same wall repeatedly.
 
             //rb.velocity = Vector3.zero;
-            rb.AddForce(MovementDirection * -1 * pushbackForce * 500f * Time.fixedDeltaTime, ForceMode.Force); // applies force backwards to get players unstuck.
+            rb.AddForce( reboundDirection.normalized * pushbackForce * 500f * Time.fixedDeltaTime, ForceMode.Force); // applies force backwards to get players unstuck.
 
             // Decrease score on collision.
             if (!scoreChanged)
@@ -125,6 +127,8 @@ public class PlayerMove : MonoBehaviour
                 scoreChanged = true;
                 ScoreManager.currentScore -= 100;
             }
+
+            hitBuilding = false;
 
             Invoke("unfreezeTurn", 0.35f /** Time.fixedDeltaTime*/); // unfreeze the rotate (avoiding the player jittering against the obstacle)
         }
@@ -139,9 +143,14 @@ public class PlayerMove : MonoBehaviour
         scoreChanged = false; // Player will lose money again on next collision.
     }
 
-    private void OnDrawGizmos()
+    private void OnCollisionEnter(Collision collision)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward * 1f);
+        if (collision.gameObject.CompareTag("Building") || collision.gameObject.CompareTag("Pedestrian"))
+        {
+            Debug.Log("Collide with obstacle");
+
+            reboundDirection = gameObject.transform.position - collision.gameObject.transform.position;
+            hitBuilding = true;
+        }
     }
 }
