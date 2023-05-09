@@ -4790,7 +4790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerText: {fileID: 585390147}
-  StartingTime: 10
+  StartingTime: 180
   gameOverUI: {fileID: 1103528737}
 --- !u!1 &1210996192
 GameObject:
