@@ -17,7 +17,6 @@ public class StartCountdown : MonoBehaviour
     public AudioSource musicAudioSource;
     [Tooltip("This is for testing! Music will probably not be played from this object in the future.")]
     public AudioClip bgMusic;
-
     private void Awake()
     {
         Active(true); // This function is used to show/hide the countdown UI.

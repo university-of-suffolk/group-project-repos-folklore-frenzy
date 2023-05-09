@@ -16,6 +16,9 @@ public class TimerCountdown : MonoBehaviour
     // This boolean is used to determine when the round is over.
     private bool roundOver = false;
 
+    // This is used to display the game over screen.
+    public GameObject gameOverUI;
+
     private void Start()
     {
         // This resets the time and starts the game at the starting time.
@@ -52,7 +55,8 @@ public class TimerCountdown : MonoBehaviour
         if (!roundOver)
         {
             roundOver = true;
-            Debug.Log("The timer has run out and the round is over!"); 
+            Debug.Log("The timer has run out and the round is over!");
+            gameOverUI.GetComponent<GameOverMenu>().Active(true); // Displays the game over screen and pauses the game.
         }
     }
 }
