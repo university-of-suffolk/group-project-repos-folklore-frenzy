@@ -132,7 +132,6 @@ public class PlayerMove : MonoBehaviour
 
             Invoke("unfreezeTurn", 0.35f /** Time.fixedDeltaTime*/); // unfreeze the rotate (avoiding the player jittering against the obstacle)
         }
-        
     }
 
     private void unfreezeTurn()

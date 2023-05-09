@@ -474,7 +474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &253380765
 RectTransform:
   m_ObjectHideFlags: 0
@@ -495,7 +495,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.134}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -29}
   m_SizeDelta: {x: 770, y: 340}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &331950400
@@ -831,7 +831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 100.816025}
+  m_AnchoredPosition: {x: 0, y: 127}
   m_SizeDelta: {x: 0, y: -169.63205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &468750587
@@ -1057,7 +1057,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1, y: 20}
+  m_AnchoredPosition: {x: -0.000030517578, y: -8}
   m_SizeDelta: {x: 0, y: -169.2641}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &494292129
@@ -1080,7 +1080,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Work In Progress
+  m_text: 'Deliver Folklore!
+
+    ''W'' speeds up
+
+    ''S'' slows down
+
+    ''A''
+    and ''D'' turn you left and right
+
+    Collect folklore from the red boxes and
+    deliver them to the green people!
+
+    You have 30 seconds per folklore and 180
+    seconds per round!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fcd53082fd29dd64b9473b90fc2049d0, type: 2}
   m_sharedMaterial: {fileID: -5319400765753171214, guid: fcd53082fd29dd64b9473b90fc2049d0, type: 2}
@@ -1384,7 +1397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &577806482
 RectTransform:
   m_ObjectHideFlags: 0

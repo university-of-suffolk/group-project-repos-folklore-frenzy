@@ -16,6 +16,9 @@ public class TimerCountdown : MonoBehaviour
     // This boolean is used to determine when the round is over.
     private bool roundOver = false;
 
+    // This is used to display the game over screen.
+    public GameObject gameOverUI;
+
     private void Start()
     {
         // This resets the time and starts the game at the starting time.
@@ -52,21 +55,8 @@ public class TimerCountdown : MonoBehaviour
         if (!roundOver)
         {
             roundOver = true;
-            Debug.Log("The timer has run out and the round is over!"); 
-
-            // Checking if there is a saved highscore, if there is then compare with the current score. If it is beaten, save the new highscore over the old.
-            if (PlayerPrefs.HasKey("Highscore"))
-            {
-                float currentHighscore = PlayerPrefs.GetFloat("Highscore");
-                if (ScoreManager.currentScore > currentHighscore)
-                {
-                    PlayerPrefs.SetFloat("Highscore", ScoreManager.currentScore);
-                }
-            }
-            else // saves the highscore if there is no save data.
-            {
-                PlayerPrefs.SetFloat("Highscore", ScoreManager.currentScore);
-            }
+            Debug.Log("The timer has run out and the round is over!");
+            gameOverUI.GetComponent<GameOverMenu>().Active(true); // Displays the game over screen and pauses the game.
         }
     }
 }
