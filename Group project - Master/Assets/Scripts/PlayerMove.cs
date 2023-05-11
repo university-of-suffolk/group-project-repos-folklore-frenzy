@@ -112,9 +112,7 @@ public class PlayerMove : MonoBehaviour
         {
             print("collided with building");
             freezeTurn = true;
-            rb.constraints = RigidbodyConstraints.FreezeRotationY;
-            rb.constraints = RigidbodyConstraints.FreezeRotationX;
-            rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+            
             rb.drag = 0f;
             Speed = 5; // lower speed to give the player a chance to correct their mistake without bouncing them off the same wall repeatedly.
 
@@ -148,7 +146,12 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.Log("Collide with obstacle");
 
+            rb.constraints = RigidbodyConstraints.FreezeRotationY;
+            rb.constraints = RigidbodyConstraints.FreezeRotationX;
+            rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+
             reboundDirection = gameObject.transform.position - collision.gameObject.transform.position;
+            reboundDirection.y = 0f;
             hitBuilding = true;
         }
     }
