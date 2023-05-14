@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -21,7 +22,22 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] bool freezeTurn;
 
     [SerializeField] Vector3 reboundDirection;
-    
+
+    public float gravityScale;
+
+    [Header("Rotation Controll")]
+    [SerializeField] Vector3 frontLeftOffset;
+    [SerializeField] Vector3 frontRightOffset;
+    [SerializeField] Vector3 backLeftOffset;
+    [SerializeField] Vector3 backRightOffset;
+
+    //distances
+    [SerializeField] float frontLeftDistance;
+    [SerializeField] float frontRightDistance;
+    [SerializeField] float backLeftDistance;
+    [SerializeField] float backRightDistance;
+
+
     [Header("Turn controls")]
     [SerializeField] float turnSens = 10f;
     [HideInInspector] public Vector3 MovementDirection;
@@ -55,19 +71,8 @@ public class PlayerMove : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeRotationY;
         }
 
-        // change rotation of cart when going left or right
-        if (Horizontal != 0 && !freezeTurn)
-        {
-            print("Turning");
-            rb.constraints = RigidbodyConstraints.None;
-            // if there is horizontal input rotate
-            newRotation += Horizontal * turnSens * Time.deltaTime;
-            transform.rotation = Quaternion.Euler(transform.rotation.x, newRotation, transform.rotation.z);
-
-            // change the velocity to be in the direction of travel so it wont drift
-            Vector3 newVelocity = rb.velocity.magnitude * transform.forward;
-            rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
-        }
+        rotationController();
+        
         // check for vertical input and change the speed
         if (Vertical != 0) 
         {
@@ -93,6 +98,23 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        //Add relative downwards force to replace gravity
+        rb.AddForce(transform.up * -1 * gravityScale, ForceMode.Acceleration);
+
+        // change rotation of cart when going left or right
+        if (Horizontal != 0 && !freezeTurn)
+        {
+            print("Turning");
+            rb.constraints = RigidbodyConstraints.None;
+            // if there is horizontal input rotate
+            newRotation = Horizontal * turnSens * Time.fixedDeltaTime;
+            transform.Rotate(0, newRotation, 0, Space.World);
+            // change the velocity to be in the direction of travel so it wont drift
+            Vector3 newVelocity = rb.velocity.magnitude * transform.forward;
+            rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
+        }
+
         if (!hitBuilding)
         {
             // set the maxSpeed
@@ -132,6 +154,32 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    private void rotationController()
+    {
+        // Will be used to controll rotation on event that it is possible to topple the player
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + frontLeftOffset, Vector3.down, out hit))
+        {
+            frontLeftDistance = hit.distance;
+        }
+
+        if (Physics.Raycast(transform.position + frontRightOffset, Vector3.down, out hit))
+        {
+            frontRightDistance = hit.distance;
+        }
+
+        if (Physics.Raycast(transform.position + backLeftOffset, Vector3.down, out hit))
+        {
+            backLeftDistance = hit.distance;
+        }
+
+        if (Physics.Raycast(transform.position + backRightOffset, Vector3.down, out hit))
+        {
+            backRightDistance = hit.distance;
+        }
+    }
+
     private void unfreezeTurn()
     {
         print("Unfreezing turn");
@@ -154,5 +202,14 @@ public class PlayerMove : MonoBehaviour
             reboundDirection.y = 0f;
             hitBuilding = true;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position + frontLeftOffset, transform.position + frontLeftOffset + Vector3.down * 100);
+        Gizmos.DrawLine(transform.position + frontRightOffset, transform.position + frontRightOffset + Vector3.down * 100);
+        Gizmos.DrawLine(transform.position + backLeftOffset, transform.position + backLeftOffset + Vector3.down * 100);
+        Gizmos.DrawLine(transform.position + backRightOffset, transform.position + backRightOffset + Vector3.down * 100);
     }
 }
