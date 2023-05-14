@@ -42,7 +42,8 @@ public class ScoreManager : MonoBehaviour
             // Has the current score been increased above its previous score?
             if (displayScore < currentScore)
             {
-                displayScore++; // Increment the display score by 1.
+                //displayScore++; // Increment the display score by 1.
+                displayScore = currentScore; // Set score.
                 scoreText.text = "¥" + displayScore.ToString();
                 tickAudioSource.PlayOneShot(tickSFX); // Tick SFX plays until display score is equal to current score.
                 gainScore = true; // Score has increased!
@@ -51,7 +52,8 @@ public class ScoreManager : MonoBehaviour
             // Has the current score been decreased below its previous score?
             if (displayScore > currentScore)
             {
-                displayScore--; // Subtract the display score by 1.
+                //displayScore--; // Subtract the display score by 1.
+                displayScore = currentScore; // Set score.
                 scoreText.text = "¥" + displayScore.ToString();
                 tickAudioSource.PlayOneShot(tickSFX); // Tick SFX plays until display score is equal to current score.
                 lostScore = true; // Score has decreased!

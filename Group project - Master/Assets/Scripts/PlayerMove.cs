@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     bool hitBuilding;
 
     [Header("Speed Controls")]
-    [SerializeField] float Speed;
+    [HideInInspector] public float Speed;
     [SerializeField] float maxSpeed;
     [SerializeField] float minSpeed;
     [SerializeField] float speedChange = 5;
