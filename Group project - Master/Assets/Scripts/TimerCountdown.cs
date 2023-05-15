@@ -61,9 +61,126 @@ public class TimerCountdown : MonoBehaviour
             if (PlayerPrefs.HasKey("Highscore"))
             {
                 float currentHighscore = PlayerPrefs.GetFloat("Highscore");
+                
                 if (ScoreManager.currentScore > currentHighscore)
                 {
                     PlayerPrefs.SetFloat("Highscore", ScoreManager.currentScore);
+
+                    if (PlayerPrefs.HasKey("Secondscore"))
+                    {
+                        float currentSecondscore = PlayerPrefs.GetFloat("Secondscore");
+                        PlayerPrefs.SetFloat("Secondscore", currentHighscore);
+                    
+                        if (PlayerPrefs.HasKey("Thirdscore"))
+                        {
+                            float currentThirdscore = PlayerPrefs.GetFloat("Thirdscore");
+                            PlayerPrefs.SetFloat("Thirdscore", currentSecondscore);
+
+                            if (PlayerPrefs.HasKey("Fourthscore"))
+                            {
+                                float currentFourthscore = PlayerPrefs.GetFloat("Fourthscore");
+                                PlayerPrefs.SetFloat("Fourthscore", currentThirdscore);
+
+                                PlayerPrefs.SetFloat("Fithscore", currentFourthscore);
+                            }
+                            else
+                            {
+                                PlayerPrefs.SetFloat("Fourthscore", currentThirdscore);
+                            }
+                        }
+                        else
+                        {
+                            PlayerPrefs.SetFloat("Thirdscore", currentSecondscore);
+                        }
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetFloat("Secondscore", currentHighscore);
+                    }
+                }
+                else
+                {
+                    //Compare to each score to see if it is higher, then, if it is, pass the old values down.
+                    if (!PlayerPrefs.HasKey("Secondscore"))
+                    {
+                        PlayerPrefs.SetFloat("Secondscore", ScoreManager.currentScore);
+                    }
+                    else if (PlayerPrefs.HasKey("Secondscore") && PlayerPrefs.GetFloat("Secondscore") <= ScoreManager.currentScore)
+                    {
+                        float currentSecondscore = PlayerPrefs.GetFloat("Secondscore");
+                        PlayerPrefs.SetFloat("Secondscore", ScoreManager.currentScore);
+
+                        if (PlayerPrefs.HasKey("Thirdscore"))
+                        {
+                            float currentThirdscore = PlayerPrefs.GetFloat("Thirdscore");
+                            PlayerPrefs.SetFloat("Thirdscore", currentSecondscore);
+
+                            if (PlayerPrefs.HasKey("Fourthscore"))
+                            {
+                                float currentFourthscore = PlayerPrefs.GetFloat("Fourthscore");
+                                PlayerPrefs.SetFloat("Fourthscore", currentThirdscore);
+
+                                PlayerPrefs.SetFloat("Fithscore", currentFourthscore);
+                            }
+                            else
+                            {
+                                PlayerPrefs.SetFloat("Fourthscore", currentThirdscore);
+                            }
+                        }
+                        else
+                        {
+                            PlayerPrefs.SetFloat("Thirdscore", currentSecondscore);
+                        }
+                    }
+                    else
+                    {
+                        // check against next on leader board
+                        if (!PlayerPrefs.HasKey("Thirdscore"))
+                        {
+                            PlayerPrefs.SetFloat("Thirdscore", ScoreManager.currentScore);
+                        }
+                        else if (PlayerPrefs.HasKey("Thirdscore") && PlayerPrefs.GetFloat("Thirdscore") <= ScoreManager.currentScore)
+                        {
+                            float currentThirdscore = PlayerPrefs.GetFloat("Thirdscore");
+                            PlayerPrefs.SetFloat("Thirdscore", ScoreManager.currentScore);
+
+                            if (PlayerPrefs.HasKey("Fourthscore"))
+                            {
+                                float currentFourthscore = PlayerPrefs.GetFloat("Fourthscore");
+                                PlayerPrefs.SetFloat("Fourthscore", currentThirdscore);
+
+                                PlayerPrefs.SetFloat("Fithscore", currentFourthscore);
+                            }
+                            else
+                            {
+                                PlayerPrefs.SetFloat("Fourthscore", currentThirdscore);
+                            }
+                        }
+                        else
+                        {
+                            if (!PlayerPrefs.HasKey("Fourthscore"))
+                            {
+                                PlayerPrefs.SetFloat("Fourthscore", ScoreManager.currentScore);
+                            }
+                            else if (PlayerPrefs.HasKey("Fourthscore") && PlayerPrefs.GetFloat("Fourthscore") <= ScoreManager.currentScore)
+                            {
+                                float currentFourthscore = PlayerPrefs.GetFloat("Fourthscore");
+                                PlayerPrefs.SetFloat("Fourthscore", ScoreManager.currentScore);
+                                PlayerPrefs.SetFloat("Fithscore", currentFourthscore);
+                            }
+                            else
+                            {
+                                if (!PlayerPrefs.HasKey("Fithscore"))
+                                {
+                                    PlayerPrefs.SetFloat("Fithscore", ScoreManager.currentScore);
+                                }
+                                else if (PlayerPrefs.HasKey("Fithscore") && PlayerPrefs.GetFloat("Fithscore") <= ScoreManager.currentScore)
+                                {
+                                    PlayerPrefs.SetFloat("Fithscore", ScoreManager.currentScore);
+                                }
+                            }
+                        }
+                    }
                 }
             }
             else // saves the highscore if there is no save data.
