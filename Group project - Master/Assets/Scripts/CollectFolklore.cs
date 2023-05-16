@@ -14,6 +14,9 @@ public class CollectFolklore : MonoBehaviour
     GameObject customerSpawnLocations;
     Transform defaultSpawn;
 
+    public static bool tutorialCustomer = true;
+    int randomCustomerPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +24,21 @@ public class CollectFolklore : MonoBehaviour
 
         customerSpawnLocations = GameObject.Find("CustomerSpawnLocations"); // Finds the GameObject storing customer spawn locations.
 
-        int randomCustomerPos = Random.Range(0, 3); // 3* Possible Locations (3 Empty Child GameObjects)
+        if (tutorialCustomer)
+        {
+            tutorialCustomer = false;
+            randomCustomerPos = 0; // The first customer always goes to this location!
+        }
+        else
+        {
+            randomCustomerPos = Random.Range(0, 3); // 3* Possible Locations (3 Empty Child GameObjects)
+        }
 
         // This takes the random number, and finds the selected array from the Empty GameObjects inside of the customerSpawnLocations GameObject (e.g., The highest Child GameObject is represented as [0]). The default spawn is then selected from the array.
         defaultSpawn = customerSpawnLocations.transform.GetChild(randomCustomerPos);
 
         // get random which folklore it is based on the % chance  ( Generate a 1 - 100 number)
         randomFolklore = Random.Range(1, 101);
-
 
         // Set Folklore //
 
