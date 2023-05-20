@@ -8,6 +8,7 @@ TagManager:
   - Pedestrian
   - Folklore
   - Customer
+  - Box
   layers:
   - Default
   - TransparentFX
