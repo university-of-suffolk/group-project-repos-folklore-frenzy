@@ -22,6 +22,7 @@ public class GameOverMenu : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(0); // The main menu should always be the first scene!
+        Time.timeScale = 1f;
     }
 
     // When the shop button is pressed, go to the shop! (Currently unavailable)

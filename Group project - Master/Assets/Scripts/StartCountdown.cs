@@ -19,17 +19,24 @@ public class StartCountdown : MonoBehaviour
     public AudioClip bgMusic;
 
     public static bool gameStarted = false;
+
+    public Camera openingCutscene;
+    public GameObject cinematicBars;
+    Animator cinematicBarsAnimator;
     private void Awake()
     {
         Active(true); // This function is used to show/hide the countdown UI.
         countdownDuration += 1; // Unity starts one second too early, hence why an extra second was added.
         Time.timeScale = 0f; // This starts the game PAUSED!
         timeRemaining = countdownDuration; // This sets the time remaining, to what we set the time to start at in the Inspector.
+
+        cinematicBarsAnimator = cinematicBars.GetComponent<Animator>();
     }
 
     private void Start()
     {
         StartCoroutine(Countdown()); // This runs the main countdown function.
+        openingCutscene.enabled = true;
     }
 
     private void Update()
@@ -73,6 +80,8 @@ public class StartCountdown : MonoBehaviour
             {
                 child.gameObject.SetActive(false);
             }
+
+            cinematicBarsAnimator.SetTrigger("Out");
         }
     }
 
