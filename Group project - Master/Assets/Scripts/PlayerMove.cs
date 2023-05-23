@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] LayerMask building;
     bool hitBuilding;
+    [SerializeField] GameObject orientation;
 
     [Header("Speed Controls")]
     [HideInInspector] public float Speed;
@@ -93,7 +94,20 @@ public class PlayerMove : MonoBehaviour
             }
         }
         // calculate the direction of movement
-        MovementDirection = transform.forward;   
+        MovementDirection = transform.forward;
+
+        ////Debug.Log("Rotation" + transform.eulerAngles);
+        //if (Mathf.Abs(transform.eulerAngles.x) > 45 || Mathf.Abs(transform.eulerAngles.z) > 45)
+        //{
+        //    // Fix for flip, Limits player rotation to 45 degrees
+        //    //transform.rotation = Quaternion.Euler(0, transform.rotation.y, 0);
+        //    //transform.eulerAngles = new Vector3(0, transform.rotation.y, 0);
+
+        //    Debug.Log("Reset Rotation");
+        //}
+
+        //rotationController();
+
     }
 
     private void FixedUpdate()
@@ -115,7 +129,7 @@ public class PlayerMove : MonoBehaviour
             rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
         }
 
-        if (!hitBuilding)
+        if (!hitBuilding || Mathf.Round(rb.velocity.magnitude) != 0)
         {
             // set the maxSpeed
             if (rb.velocity.magnitude < Speed) // if going fowards
@@ -158,26 +172,8 @@ public class PlayerMove : MonoBehaviour
     {
         // Will be used to controll rotation on event that it is possible to topple the player
 
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position + frontLeftOffset, Vector3.down, out hit))
-        {
-            frontLeftDistance = hit.distance;
-        }
-
-        if (Physics.Raycast(transform.position + frontRightOffset, Vector3.down, out hit))
-        {
-            frontRightDistance = hit.distance;
-        }
-
-        if (Physics.Raycast(transform.position + backLeftOffset, Vector3.down, out hit))
-        {
-            backLeftDistance = hit.distance;
-        }
-
-        if (Physics.Raycast(transform.position + backRightOffset, Vector3.down, out hit))
-        {
-            backRightDistance = hit.distance;
-        }
+        //gameObject.transform.eulerAngles = new Vector3(orientation.transform.eulerAngles.x, transform.eulerAngles.y, orientation.transform.eulerAngles.z);
+        Debug.Log("ROTATION CONTROL ACTIVATED");
     }
 
     private void unfreezeTurn()
@@ -194,11 +190,17 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.Log("Collide with obstacle");
 
-            rb.constraints = RigidbodyConstraints.FreezeRotationY;
-            rb.constraints = RigidbodyConstraints.FreezeRotationX;
-            rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
 
-            reboundDirection = gameObject.transform.position - collision.gameObject.transform.position;
+            ContactPoint contact = collision.contacts[0];
+            Vector3 position = contact.point;
+
+            reboundDirection = gameObject.transform.position - position;
+
+            //rb.constraints = RigidbodyConstraints.FreezeRotationX;
+            //rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+
+            //reboundDirection = gameObject.transform.position - collision.gameObject.transform.position;
             reboundDirection.y = 0f;
             hitBuilding = true;
         }
@@ -207,10 +209,7 @@ public class PlayerMove : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position + frontLeftOffset, transform.position + frontLeftOffset + Vector3.down * 100);
-        Gizmos.DrawLine(transform.position + frontRightOffset, transform.position + frontRightOffset + Vector3.down * 100);
-        Gizmos.DrawLine(transform.position + backLeftOffset, transform.position + backLeftOffset + Vector3.down * 100);
-        Gizmos.DrawLine(transform.position + backRightOffset, transform.position + backRightOffset + Vector3.down * 100);
+        Gizmos.DrawLine(transform.position, transform.position - (transform.up));
     }
 
     private void OnTriggerEnter(Collider other)
