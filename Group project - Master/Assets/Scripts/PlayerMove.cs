@@ -212,12 +212,4 @@ public class PlayerMove : MonoBehaviour
         Gizmos.DrawLine(transform.position + backLeftOffset, transform.position + backLeftOffset + Vector3.down * 100);
         Gizmos.DrawLine(transform.position + backRightOffset, transform.position + backRightOffset + Vector3.down * 100);
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Box"))
-        {
-            other.GetComponent<Animator>().SetTrigger("Smash");
-        }
-    }
 }

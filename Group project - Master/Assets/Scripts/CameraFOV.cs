@@ -18,7 +18,7 @@ public class CameraFOV : MonoBehaviour
 
     public ParticleSystem speedlineParticles;
 
-    const float zoomStep = 3.0f;
+    const float zoomStep = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -46,16 +46,16 @@ public class CameraFOV : MonoBehaviour
     }
     void ProcessFOV()
     {
-        currentFov = Mathf.MoveTowards(currentFov, desiredFov, zoomStep * Time.deltaTime);
+        //currentFov = Mathf.MoveTowards(currentFov, desiredFov, zoomStep * Time.deltaTime);
+        currentFov = Mathf.MoveTowards(minFOV, maxFOV, player_speed);
     }
     void SetFOV()
     {
         Camera.main.fieldOfView = currentFov;
     }
-
     void Speedlines()
     {
-        if (GetComponent<PlayerMove>().Speed >= 20)
+        if (currentFov > 90)
         {
             speedlineParticles.Play();
         }
