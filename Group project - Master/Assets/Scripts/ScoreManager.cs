@@ -17,12 +17,16 @@ public class ScoreManager : MonoBehaviour
     public AudioSource audioSource; // This is a regular audio source for sounds at regular volume.
     public AudioClip tickSFX; // This SFX plays quietly when the score changes.
     public AudioClip ScoreTotalSFX; // This SFX plays when the current score meets the display score.
+
+    public Animator scoreTextAnim;
     void Start()
     {
         currentScore = 0; // This is the score set inside the code.
         displayScore = 0; // This is the score we see on the screen.
     
         StartCoroutine(ScoreUpdater()); // This begins a loop which checks when we change the player's score.
+
+        scoreTextAnim = scoreText.GetComponent<Animator>();
     }
 
     void Update()
@@ -47,6 +51,7 @@ public class ScoreManager : MonoBehaviour
                 scoreText.text = "¥" + displayScore.ToString();
                 tickAudioSource.PlayOneShot(tickSFX); // Tick SFX plays until display score is equal to current score.
                 gainScore = true; // Score has increased!
+                scoreTextAnim.SetTrigger("Score");
             }
 
             // Has the current score been decreased below its previous score?
@@ -57,8 +62,10 @@ public class ScoreManager : MonoBehaviour
                 scoreText.text = "¥" + displayScore.ToString();
                 tickAudioSource.PlayOneShot(tickSFX); // Tick SFX plays until display score is equal to current score.
                 lostScore = true; // Score has decreased!
+                scoreTextAnim.SetTrigger("Lose");
             }
 
+            // These play sound when score is tallied.
             if (displayScore == currentScore && gainScore)
             {
                 audioSource.pitch = 1f;

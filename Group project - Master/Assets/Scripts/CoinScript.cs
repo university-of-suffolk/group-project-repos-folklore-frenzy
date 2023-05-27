@@ -26,12 +26,20 @@ public class CoinScript : MonoBehaviour
     public AudioClip coinSFX;
     AudioSource audioSource;
 
+    [Header("Special Effects")]
+    [Tooltip("This is the empty GameObject which holds the particle system object!")]
+    public GameObject sparkles;
+    public GameObject collect;
+    ParticleSystem collectParticles;
+
     MeshRenderer meshRenderer;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         meshRenderer = GetComponent<MeshRenderer>();
+
+        collectParticles = collect.transform.GetChild(0).GetComponent<ParticleSystem>();
     }
 
     // This occurs when the player character has entered the Coin GameObject trigger.
@@ -49,6 +57,12 @@ public class CoinScript : MonoBehaviour
                 audioSource.PlayOneShot(coinSFX);
 
                 meshRenderer.enabled = false;
+
+                Destroy(sparkles);
+
+                collectParticles.Play();
+
+                HiddenCoinUI.coinsFound += 1; // Updates UI
             }
         }
     }

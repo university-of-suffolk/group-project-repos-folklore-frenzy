@@ -49,10 +49,16 @@ public class PlayerMove : MonoBehaviour
 
     bool scoreChanged = false;
 
+    [Header("Effects")]
+    // Damage vignette
+    public GameObject vignette;
+    Animator vignetteAnim;
+
     // Start is called before the first frame update
     void Start()
     {
         rb.GetComponent<Rigidbody>();
+        vignetteAnim = vignette.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -201,6 +207,7 @@ public class PlayerMove : MonoBehaviour
             reboundDirection = gameObject.transform.position - collision.gameObject.transform.position;
             reboundDirection.y = 0f;
             hitBuilding = true;
+            vignetteAnim.SetTrigger("Fade"); // Displays red vignette on damage
         }
     }
 
