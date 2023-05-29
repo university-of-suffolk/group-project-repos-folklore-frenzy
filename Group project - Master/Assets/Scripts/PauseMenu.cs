@@ -21,7 +21,7 @@ public class PauseMenu : MonoBehaviour
     // When the main menu button is pressed, return to the main menu.
     public void MainMenu()
     {
-        //Time.timeScale = 1f; // Unpauses on the main menu
+        Time.timeScale = 1f; // Unpauses on the main menu
         SceneManager.LoadScene(0); // The main menu should always be the first scene!
     }
 

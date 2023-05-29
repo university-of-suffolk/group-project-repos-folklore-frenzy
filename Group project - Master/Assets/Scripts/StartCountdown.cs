@@ -18,14 +18,15 @@ public class StartCountdown : MonoBehaviour
     [Tooltip("This is for testing! Music will probably not be played from this object in the future.")]
     public AudioClip bgMusic;
 
-    public static bool gameStarted = false;
+    public static bool gameStarted;
 
     public Camera openingCutscene;
     public GameObject cinematicBars;
     Animator cinematicBarsAnimator;
     private void Awake()
     {
-        openingCutscene.enabled = true;
+        gameStarted = false;
+        openingCutscene.GetComponent<CutsceneClose>().Active(true);
         Active(true); // This function is used to show/hide the countdown UI.
         countdownDuration += 1; // Unity starts one second too early, hence why an extra second was added.
         Time.timeScale = 0f; // This starts the game PAUSED!
@@ -36,7 +37,6 @@ public class StartCountdown : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Countdown()); // This runs the main countdown function.
-        openingCutscene.enabled = true;
     }
 
     private void Update()
@@ -68,6 +68,7 @@ public class StartCountdown : MonoBehaviour
         Time.timeScale = 1f; // UNPAUSES the game.
         gameStarted = true;
         Active(false); // Hides the countdown UI.
+        openingCutscene.GetComponent<CutsceneClose>().Active(false); // Hides camera
 
         // --> This is where we can add a function to play background music in our game! <-- //
         // e.g., audioSource.PlayOneShot(musicBGSFX); or playMusic(); or MusicManager.playMusic(); //
