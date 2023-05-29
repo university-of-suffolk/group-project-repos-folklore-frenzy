@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMove : MonoBehaviour
 {
     [Header("Componants")]
     [SerializeField] Rigidbody rb;
     [SerializeField] LayerMask building;
+    [SerializeField] LayerMask ramp;
     bool hitBuilding;
 
     [Header("Speed Controls")]
@@ -25,22 +27,27 @@ public class PlayerMove : MonoBehaviour
 
     public float gravityScale;
 
-    [Header("Rotation Controll")]
-    [SerializeField] Vector3 frontLeftOffset;
-    [SerializeField] Vector3 frontRightOffset;
-    [SerializeField] Vector3 backLeftOffset;
-    [SerializeField] Vector3 backRightOffset;
-
-    //distances
-    [SerializeField] float frontLeftDistance;
-    [SerializeField] float frontRightDistance;
-    [SerializeField] float backLeftDistance;
-    [SerializeField] float backRightDistance;
-
+    //[Header("Collision")]
+    //[SerializeField] bool collided;
+    ////offsets
+    //[SerializeField] Vector3 frontLeftOffset;
+    //[SerializeField] Vector3 frontMiddleOffset;
+    //[SerializeField] Vector3 frontRightOffset;
+    //[SerializeField] Vector3 leftFrontOffset;
+    //[SerializeField] Vector3 leftBackOffset;
+    //[SerializeField] Vector3 rightFrontOffset;
+    //[SerializeField] Vector3 rightBackOffset;
+    //[SerializeField] Vector3 leftCornerOffset;
+    //[SerializeField] Vector3 rightCornerOffset;
+    ////length
+    //[SerializeField] float collisionRange;
 
     [Header("Turn controls")]
     [SerializeField] float turnSens = 10f;
     [HideInInspector] public Vector3 MovementDirection;
+    [SerializeField] float rampCheckOffset;
+    [SerializeField] float rampCheckdistance;
+    [SerializeField] bool isRamp;
 
     [Header("Input")]
     float Horizontal;
@@ -76,8 +83,6 @@ public class PlayerMove : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints.FreezeRotationY;
         }
-
-        rotationController();
         
         // check for vertical input and change the speed
         if (Vertical != 0) 
@@ -104,14 +109,136 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Raycasts on front and sides to detect collision (has the side effect of not ping ponging between walls as much)
+        //if (!collided) 
+        //{ 
+        //    collided = Physics.Raycast(transform.position + frontLeftOffset, transform.forward, collisionRange, building); 
+        //    if (collided)
+        //    {
+        //        reboundDirection = Vector3.forward * -1f;
+        //        Debug.Log("Front left");
+        //    }
+        //}
+        //if (!collided)
+        //{
+        //    collided = Physics.Raycast(transform.position + frontMiddleOffset, transform.forward, collisionRange, building);
+        //    if (collided)
+        //    {
+        //        reboundDirection = Vector3.forward * -1f;
+        //        Debug.Log("Front mid");
+        //    }
+        //}
+        //if (!collided)
+        //{ 
+        //    collided = Physics.Raycast(transform.position + frontRightOffset, transform.forward, collisionRange, building);
+        //    if (collided)
+        //    {
+        //        reboundDirection = Vector3.forward * -1f;
+        //        Debug.Log("Front right");
+        //    }
+        //}
+        //if (!collided) 
+        //{ 
+        //    collided = Physics.Raycast(transform.position + leftFrontOffset, transform.right * -1, collisionRange, building);
+        //    if (collided)
+        //    {
+        //        reboundDirection = Vector3.right;
+        //        Debug.Log("left front");
+        //    }
+        //}
+        //if (!collided) 
+        //{ 
+        //    collided = Physics.Raycast(transform.position + leftBackOffset, transform.right * -1, collisionRange, building);
+        //    if (collided)
+        //    {
+        //        reboundDirection = Vector3.right;
+        //        Debug.Log("left back");
+        //    }
+        //}
+        //if (!collided) 
+        //{ 
+        //    collided = Physics.Raycast(transform.position + rightFrontOffset, transform.right, collisionRange, building);
+        //    if (collided)
+        //    {
+        //        reboundDirection = Vector3.left;
+        //        Debug.Log("right front");
+        //    }
+        //}
+        //if (!collided)
+        //{ 
+        //    collided = Physics.Raycast(transform.position + rightBackOffset, transform.right, collisionRange, building);
+        //    if (collided)
+        //    {
+        //        reboundDirection = Vector3.left;
+        //        Debug.Log("right back");
+        //    }
+        //}
+        //if (!collided) 
+        //{
+        //    collided = Physics.Raycast(transform.position + leftCornerOffset, (transform.right * -1) + transform.forward, collisionRange, building);
+        //    if (collided)
+        //    {
+        //        reboundDirection = Vector3.right + (Vector3.back);
+        //        Debug.Log("left corner");
+        //    }
+        //}
+        //if (!collided) 
+        //{ 
+        //    collided = Physics.Raycast(transform.position + rightCornerOffset, transform.right + transform.forward, collisionRange, building);
+        //    if (collided)
+        //    {
+        //        reboundDirection = (Vector3.left) + (Vector3.left);
+        //        Debug.Log("right corner");
+        //    }
+        //}
+        //if (collided)
+        //{
+        //    hitBuilding = true;
+        //    collided = false;
+        //}
 
-        //Add relative downwards force to replace gravity
-        rb.AddForce(transform.up * -1 * gravityScale, ForceMode.Acceleration);
+        //RampCheck
+        //isRamp = Physics.Raycast(transform.position + Vector3.down * rampCheckOffset, transform.forward, rampCheckdistance, ramp);
+        //if (isRamp)
+        //{
+        //    rb.constraints = RigidbodyConstraints.None;
+        //    Debug.Log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RAMP");
+        //}
+        //else if (!isRamp && transform.rotation.x == 0 && transform.rotation.z == 0)
+        //{
+        //    Debug.Log("###################################################### FREEZING ROTATION");
+        //    rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        //}
+
+        //if (transform.eulerAngles.x > 40 )
+        //{
+        //    Debug.Log("clamp x rotation positive");
+        //    transform.eulerAngles = new Vector3(40, transform.rotation.y, transform.rotation.z);
+        //}
+        //if (transform.eulerAngles.x < -40)
+        //{
+        //    Debug.Log("clamp x rotation negative");
+        //    transform.eulerAngles = new Vector3(-40, transform.rotation.y, transform.rotation.z);
+        //}
+        //if (transform.eulerAngles.z > 40)
+        //{
+        //    Debug.Log("clamp z rotation positive");
+        //    transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, 40);
+        //}
+        //if (transform.eulerAngles.z < -40)
+        //{
+        //    Debug.Log("clamp z rotation negative");
+        //    transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, -40);
+        //}
+
+
+            //Add relative downwards force to replace gravity
+            rb.AddForce(transform.up * -1 * gravityScale, ForceMode.Acceleration);
 
         // change rotation of cart when going left or right
         if (Horizontal != 0 && !freezeTurn)
         {
-            print("Turning");
+            //print("Turning");
             rb.constraints = RigidbodyConstraints.None;
             // if there is horizontal input rotate
             newRotation = Horizontal * turnSens * Time.fixedDeltaTime;
@@ -126,7 +253,7 @@ public class PlayerMove : MonoBehaviour
             // set the maxSpeed
             if (rb.velocity.magnitude < Speed) // if going fowards
             {
-                Debug.Log("Applying forward force");
+                //Debug.Log("Applying forward force");
                 rb.drag = 0f; // remove the drag so the player can affectivly accelerate
                 AppliedSpeed = Speed * 500;
                 rb.AddForce(MovementDirection * AppliedSpeed * Time.fixedDeltaTime, ForceMode.Force); // apply the forwards force.
@@ -138,9 +265,9 @@ public class PlayerMove : MonoBehaviour
         }
         else // turning off foward force, to cleanly apply the bouceback when the player collides with an obstacle.
         {
-            print("collided with building");
+            //print("collided with building");
             freezeTurn = true;
-            
+            vignetteAnim.SetTrigger("Fade"); // Displays red vignette on damage
             rb.drag = 0f;
             Speed = 5; // lower speed to give the player a chance to correct their mistake without bouncing them off the same wall repeatedly.
 
@@ -156,33 +283,7 @@ public class PlayerMove : MonoBehaviour
 
             hitBuilding = false;
 
-            Invoke("unfreezeTurn", 0.35f /** Time.fixedDeltaTime*/); // unfreeze the rotate (avoiding the player jittering against the obstacle)
-        }
-    }
-
-    private void rotationController()
-    {
-        // Will be used to controll rotation on event that it is possible to topple the player
-
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position + frontLeftOffset, Vector3.down, out hit))
-        {
-            frontLeftDistance = hit.distance;
-        }
-
-        if (Physics.Raycast(transform.position + frontRightOffset, Vector3.down, out hit))
-        {
-            frontRightDistance = hit.distance;
-        }
-
-        if (Physics.Raycast(transform.position + backLeftOffset, Vector3.down, out hit))
-        {
-            backLeftDistance = hit.distance;
-        }
-
-        if (Physics.Raycast(transform.position + backRightOffset, Vector3.down, out hit))
-        {
-            backRightDistance = hit.distance;
+            Invoke("unfreezeTurn", 0.35f); // unfreeze the rotate (avoiding the player jittering against the obstacle)
         }
     }
 
@@ -204,19 +305,27 @@ public class PlayerMove : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeRotationX;
             rb.constraints = RigidbodyConstraints.FreezeRotationZ;
 
-            reboundDirection = gameObject.transform.position - collision.gameObject.transform.position;
-            reboundDirection.y = 0f;
+            reboundDirection = /*gameObject.transform.position - collision.gameObject.transform.position;*/ transform.forward * -1;
+            //reboundDirection.y = 0f;
             hitBuilding = true;
-            vignetteAnim.SetTrigger("Fade"); // Displays red vignette on damage
+
         }
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position + frontLeftOffset, transform.position + frontLeftOffset + Vector3.down * 100);
-        Gizmos.DrawLine(transform.position + frontRightOffset, transform.position + frontRightOffset + Vector3.down * 100);
-        Gizmos.DrawLine(transform.position + backLeftOffset, transform.position + backLeftOffset + Vector3.down * 100);
-        Gizmos.DrawLine(transform.position + backRightOffset, transform.position + backRightOffset + Vector3.down * 100);
+
+        Gizmos.DrawLine(transform.position + Vector3.down * rampCheckOffset, transform.position + Vector3.down * rampCheckOffset + transform.forward * rampCheckdistance);
+
+        //Gizmos.DrawLine(transform.position + frontLeftOffset, transform.position + frontLeftOffset + transform.forward * collisionRange);
+        //Gizmos.DrawLine(transform.position + frontMiddleOffset, transform.position + frontMiddleOffset + transform.forward * collisionRange);
+        //Gizmos.DrawLine(transform.position + frontRightOffset, transform.position + frontRightOffset + transform.forward * collisionRange);
+        //Gizmos.DrawLine(transform.position + leftFrontOffset, transform.position + leftFrontOffset + transform.right * -1 * collisionRange);
+        //Gizmos.DrawLine(transform.position + leftBackOffset, transform.position + leftBackOffset + transform.right * -1 * collisionRange);
+        //Gizmos.DrawLine(transform.position + rightFrontOffset, transform.position + rightFrontOffset + transform.right * collisionRange);
+        //Gizmos.DrawLine(transform.position + rightBackOffset, transform.position + rightBackOffset + transform.right * collisionRange);
+        //Gizmos.DrawLine(transform.position + leftCornerOffset, transform.position + leftCornerOffset + (transform.right * -1) + transform.forward * collisionRange);
+        //Gizmos.DrawLine(transform.position + rightCornerOffset, transform.position + rightCornerOffset + transform.right + transform.forward * collisionRange);
     }
 }

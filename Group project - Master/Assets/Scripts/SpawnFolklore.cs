@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class SpawnFolklore : MonoBehaviour
@@ -7,6 +8,7 @@ public class SpawnFolklore : MonoBehaviour
     [SerializeField]GameObject Folklore;
     Transform defaultSpawn;
     GameObject folkloreSpawnLocations;
+    public static int currentFolklore;
 
     bool tutorial = true;
 
@@ -35,7 +37,8 @@ public class SpawnFolklore : MonoBehaviour
         }
         else
         {
-            randomFolklorePos = Random.Range(0, 3); // 3* Possible Locations (3 Empty Child GameObjects)
+            randomFolklorePos = Random.Range(0, 10); // 10* Possible Locations (10 Empty Child GameObjects)
+            currentFolklore = randomFolklorePos;
         }
 
         // This takes the random number, and finds the selected array from the Empty GameObjects inside of the folkloreSpawnLocations GameObject (e.g., The highest Child GameObject is represented as [0]). The default spawn is then selected from the array.

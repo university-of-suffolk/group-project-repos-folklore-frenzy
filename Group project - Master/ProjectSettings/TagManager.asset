@@ -9,6 +9,7 @@ TagManager:
   - Folklore
   - Customer
   - Box
+  - ramp
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Pointer
   - MiniMap Symbol
   - Effects
-  - 
+  - ramp
   - 
   - 
   - 

@@ -462,16 +462,9 @@ MonoBehaviour:
   freezeTurn: 0
   reboundDirection: {x: 0, y: 0, z: 0}
   gravityScale: 30
-  frontLeftOffset: {x: -0.52, y: 0, z: 0.52}
-  frontRightOffset: {x: 0.52, y: 0, z: 0.52}
-  backLeftOffset: {x: -0.52, y: 0, z: -0.52}
-  backRightOffset: {x: 0.52, y: 0, z: -0.52}
-  frontLeftDistance: 0
-  frontRightDistance: 0
-  backLeftDistance: 0
-  backRightDistance: 0
   turnSens: 75
   MovementDirection: {x: 0, y: 0, z: 0}
+  vignette: {fileID: 0}
 --- !u!114 &7843637937389215501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +490,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7272427382704937750}
   - component: {fileID: 6787708156999657714}
+  - component: {fileID: 3721046220495484775}
+  - component: {fileID: 2848233054231250870}
   m_Layer: 9
   m_Name: Player Minimap Symbol
   m_TagString: Untagged
@@ -512,7 +507,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6574897157230148532}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 49.72, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -571,6 +566,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3721046220495484775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574897157230148532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd9aa75520f8d04da58e31be81b5da5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cart: {fileID: 4819675984800385134}
+--- !u!54 &2848233054231250870
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574897157230148532}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &6684711292011302602
 GameObject:
   m_ObjectHideFlags: 0

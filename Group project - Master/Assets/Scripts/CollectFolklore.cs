@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,11 +32,96 @@ public class CollectFolklore : MonoBehaviour
         }
         else
         {
-            randomCustomerPos = Random.Range(0, 3); // 3* Possible Locations (3 Empty Child GameObjects)
+            // 10* Possible Locations (10 Empty Child GameObjects)
+            print("RANDOMISE CUSTOMER SPAWN " + SpawnFolklore.currentFolklore);
+            if (SpawnFolklore.currentFolklore == 1)
+            {
+                //1 or 8
+                int RandPos = Random.Range(0, 2);
+                if (RandPos == 1) { randomCustomerPos = 0; }
+                else { randomCustomerPos = 7; }
+                Debug.Log("POSITION 1: " + RandPos + "," + randomCustomerPos);
+            }
+            else if (SpawnFolklore.currentFolklore == 2)
+            {
+                //5 or 6
+                int RandPos = Random.Range(0, 2);
+                if (RandPos == 1) { randomCustomerPos = 4; }
+                else { randomCustomerPos = 5; }
+                Debug.Log("POSITION 2: " + RandPos + "," + randomCustomerPos);
+            }
+            else if (SpawnFolklore.currentFolklore == 3)
+            {
+                // 7 and 5
+                int RandPos = Random.Range(0, 2);
+                if (RandPos == 1) { randomCustomerPos = 6; }
+                else { randomCustomerPos = 4; }
+                Debug.Log("POSITION 3: " + RandPos + "," + randomCustomerPos);
+            }
+            else if (SpawnFolklore.currentFolklore == 4)
+            {
+                //2 7 4
+                int RandPos = Random.Range(0, 3);
+                if (RandPos == 1) { randomCustomerPos = 1; }
+                else if (RandPos == 2) { randomCustomerPos = 6; }
+                else { randomCustomerPos = 3; }
+                Debug.Log("POSITION 4: " + RandPos + "," + randomCustomerPos);
+            }
+            else if (SpawnFolklore.currentFolklore == 5)
+            {
+                //2 3 9
+                int RandPos = Random.Range(0, 3);
+                if (RandPos == 1) { randomCustomerPos = 1; }
+                else if (RandPos == 2) { randomCustomerPos = 2; }
+                else { randomCustomerPos = 8; }
+                Debug.Log("POSITION 5: " + RandPos + "," + randomCustomerPos);
+            }
+            else if (SpawnFolklore.currentFolklore == 6)
+            {
+                //3 10
+                int RandPos = Random.Range(0, 2);
+                if (RandPos == 1) { randomCustomerPos = 2; }
+                else { randomCustomerPos = 9; }
+                Debug.Log("POSITION 6: " + RandPos + "," + randomCustomerPos);
+            }
+            else if (SpawnFolklore.currentFolklore == 7)
+            {
+                // 1 6 8
+                int RandPos = Random.Range(0, 3);
+                if (RandPos == 1) { randomCustomerPos = 1; }
+                else if (RandPos == 2) { randomCustomerPos = 5; }
+                else { randomCustomerPos = 7; }
+                Debug.Log("POSITION 7: " + RandPos + "," + randomCustomerPos);
+            }
+            else if (SpawnFolklore.currentFolklore == 8)
+            {
+                // 10 6
+                int RandPos = Random.Range(0, 2);
+                if (RandPos == 1) { randomCustomerPos = 4; }
+                else { randomCustomerPos = 9; }
+                Debug.Log("POSITION 8: " + RandPos + "," + randomCustomerPos);
+            }
+            else if (SpawnFolklore.currentFolklore == 9)
+            {
+                // 5 9
+                int RandPos = Random.Range(0, 2);
+                if (RandPos == 1) { randomCustomerPos = 4; }
+                else { randomCustomerPos = 8; }
+                Debug.Log("POSITION 9: " + RandPos + "," + randomCustomerPos);
+            }
+            else if (SpawnFolklore.currentFolklore == 10)
+            {
+                //5 10
+                int RandPos = Random.Range(0, 2);
+                if (RandPos == 1) { randomCustomerPos = 4; }
+                else { randomCustomerPos = 9; }
+                Debug.Log("POSITION 10: " + RandPos + "," + randomCustomerPos);
+            }
         }
-
+        print("Random Customer Position: " + randomCustomerPos);
         // This takes the random number, and finds the selected array from the Empty GameObjects inside of the customerSpawnLocations GameObject (e.g., The highest Child GameObject is represented as [0]). The default spawn is then selected from the array.
         defaultSpawn = customerSpawnLocations.transform.GetChild(randomCustomerPos);
+        print("Spawn: " + defaultSpawn);
 
         // get random which folklore it is based on the % chance  ( Generate a 1 - 100 number)
         randomFolklore = Random.Range(1, 101);

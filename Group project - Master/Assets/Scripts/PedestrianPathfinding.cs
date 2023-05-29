@@ -38,7 +38,11 @@ public class PedestrianPathfinding : MonoBehaviour
             NavMesh.SamplePosition(spawn + Random.insideUnitSphere * pathingRadius, out NavMeshHit hit, pathingRadius, NavMesh.AllAreas);
 
             NavMeshPath path = new NavMeshPath();
-            if (nav.CalculatePath(hit.position, path))
+            if (hit.position == Vector3.positiveInfinity)
+            {
+                changeDestination = true;
+            }
+            else if (nav.CalculatePath(hit.position, path))
             {
                 nav.SetPath(path);
             }
