@@ -8,12 +8,11 @@ public class DeliveryController : MonoBehaviour
     [SerializeField] float orderIndex;
 
     GameObject folkloreSpawner;
-    GameObject hintArrowObject;
+    GameObject cartFolklore; // This is the folklore inside of the cart!
 
     private void Start()
     {
         folkloreSpawner = GameObject.Find("Folklore Spawner");
-        hintArrowObject = GameObject.Find("HintArrow");
 
         // determine which folklore the customer wants.
         orderIndex = PlayerInventory.folkloreIndex;
@@ -57,16 +56,23 @@ public class DeliveryController : MonoBehaviour
 
                 }
 
-                // destroy customer after transaction
-                Destroy(hintArrowObject);
+                // destroy customer and cart folklore after transaction
+
+                cartFolklore = other.transform.Find("FolkloreCartObject").gameObject;
+                cartFolklore.SetActive(false);
+
                 Destroy(transform.parent.gameObject);
                 folkloreSpawner.GetComponent<SpawnFolklore>().Spawn(); // Spawn new folklore!
             }
             else if (FolkloreTimerCountdown.deliveryFailed) // The delivery has been made over the time limit.
             {
+                // Removes folklore inside of cart
+                cartFolklore = other.transform.Find("FolkloreCartObject").gameObject;
+                cartFolklore.SetActive(false);
+
                 ScoreManager.currentScore -= 200f;
+
                 folkloreSpawner.GetComponent<SpawnFolklore>().Spawn(); // Spawn new folklore!
-                Destroy(hintArrowObject);
                 Destroy(transform.parent.gameObject);
             }
 

@@ -15,6 +15,8 @@ public class CollectFolklore : MonoBehaviour
     GameObject customerSpawnLocations;
     Transform defaultSpawn;
 
+    GameObject cartFolklore; // This is the folklore we see inside the cart!
+
     public static bool tutorialCustomer = true;
     int randomCustomerPos;
 
@@ -174,6 +176,9 @@ public class CollectFolklore : MonoBehaviour
             //Instantiate the customer.
             Instantiate(Customer, defaultSpawn);
 
+            //Show folklore inside cart!
+            cartFolklore = other.transform.Find("FolkloreCartObject").gameObject;
+            cartFolklore.SetActive(true);
             Destroy(gameObject);
         }
     }

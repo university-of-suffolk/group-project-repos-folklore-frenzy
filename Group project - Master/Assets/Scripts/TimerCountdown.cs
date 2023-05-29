@@ -19,6 +19,8 @@ public class TimerCountdown : MonoBehaviour
     // This is used to display the game over screen.
     public GameObject gameOverUI;
 
+    bool cueTextPulse = false;
+
     private void Start()
     {
         // This resets the time and starts the game at the starting time.
@@ -39,6 +41,12 @@ public class TimerCountdown : MonoBehaviour
             // Time.deltaTime decrements the currentTime every second, instead of every frame, and updates the timer UI text.
             CurrentTime -= 1 * Time.deltaTime;
             UpdateTimer();
+        }
+
+        if(CurrentTime <= 60 && CurrentTime >= 1 && !cueTextPulse)
+        {
+            cueTextPulse = true;
+            TimerText.GetComponent<Animator>().SetTrigger("Shake");
         }
     }
 

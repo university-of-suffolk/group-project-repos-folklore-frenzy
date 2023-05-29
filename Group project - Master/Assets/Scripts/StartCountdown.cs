@@ -42,6 +42,16 @@ public class StartCountdown : MonoBehaviour
     private void Update()
     {
         countdownText.text = timeRemaining.ToString("0"); // When the timeRemaining is changed, it will update the text.
+
+        // This pauses the music during the pause screen!
+        if(gameStarted && Time.timeScale == 0f && musicAudioSource.isPlaying)
+        {
+            musicAudioSource.Pause();
+        }
+        else if(gameStarted && Time.timeScale == 1f && !musicAudioSource.isPlaying)
+        {
+            musicAudioSource.UnPause();
+        }
     }
 
     IEnumerator Countdown()
