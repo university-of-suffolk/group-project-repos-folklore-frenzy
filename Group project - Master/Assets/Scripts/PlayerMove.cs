@@ -72,7 +72,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         // Only get the player input when the game is not paused. (I.e., the player can't move while paused)
-        if (!PauseManager.isPaused)
+        if (Time.timeScale == 1f)
         {
             // get directional input
             Horizontal = Input.GetAxisRaw("Horizontal");

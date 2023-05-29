@@ -133,6 +133,7 @@ MonoBehaviour:
   randomFolklore: 0
   newfolkloreIndex: 0
   Customer: {fileID: 5000196539065162594, guid: 493d9a381f634704c8ca2056a6ddcf45, type: 3}
+  pickUpSFX: {fileID: 8300000, guid: f693d92254695534c99ec703316e8780, type: 3}
 --- !u!114 &8660404168354679585
 MonoBehaviour:
   m_ObjectHideFlags: 0

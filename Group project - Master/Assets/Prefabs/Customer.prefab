@@ -192,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomOrder: 0
   orderIndex: 0
+  DeliverySFX: {fileID: 8300000, guid: 35790041717d21b4391a68123c12eef1, type: 3}
 --- !u!1 &8473662182519070002
 GameObject:
   m_ObjectHideFlags: 0

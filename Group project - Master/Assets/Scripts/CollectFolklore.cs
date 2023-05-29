@@ -20,6 +20,8 @@ public class CollectFolklore : MonoBehaviour
     public static bool tutorialCustomer = true;
     int randomCustomerPos;
 
+    public AudioClip pickUpSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -175,6 +177,9 @@ public class CollectFolklore : MonoBehaviour
 
             //Instantiate the customer.
             Instantiate(Customer, defaultSpawn);
+
+            other.GetComponent<AudioSource>().pitch = 1f;
+            other.GetComponent<AudioSource>().PlayOneShot(pickUpSFX); // Play pickup sound from the player!
 
             //Show folklore inside cart!
             cartFolklore = other.transform.Find("FolkloreCartObject").gameObject;

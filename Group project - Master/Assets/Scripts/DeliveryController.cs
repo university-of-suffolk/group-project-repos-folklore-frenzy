@@ -10,6 +10,8 @@ public class DeliveryController : MonoBehaviour
     GameObject folkloreSpawner;
     GameObject cartFolklore; // This is the folklore inside of the cart!
 
+    public AudioClip DeliverySFX;
+
     private void Start()
     {
         folkloreSpawner = GameObject.Find("Folklore Spawner");
@@ -61,6 +63,9 @@ public class DeliveryController : MonoBehaviour
                 cartFolklore = other.transform.Find("FolkloreCartObject").gameObject;
                 cartFolklore.SetActive(false);
 
+                other.GetComponent<AudioSource>().pitch = 1f;
+                other.GetComponent<AudioSource>().PlayOneShot(DeliverySFX); // Play delivery sound from the player!
+
                 Destroy(transform.parent.gameObject);
                 folkloreSpawner.GetComponent<SpawnFolklore>().Spawn(); // Spawn new folklore!
             }
@@ -71,6 +76,9 @@ public class DeliveryController : MonoBehaviour
                 cartFolklore.SetActive(false);
 
                 ScoreManager.currentScore -= 200f;
+
+                other.GetComponent<AudioSource>().pitch = 0.7f;
+                other.GetComponent<AudioSource>().PlayOneShot(DeliverySFX); // Play delivery sound from the player!
 
                 folkloreSpawner.GetComponent<SpawnFolklore>().Spawn(); // Spawn new folklore!
                 Destroy(transform.parent.gameObject);

@@ -25,11 +25,11 @@ public class StartCountdown : MonoBehaviour
     Animator cinematicBarsAnimator;
     private void Awake()
     {
+        openingCutscene.enabled = true;
         Active(true); // This function is used to show/hide the countdown UI.
         countdownDuration += 1; // Unity starts one second too early, hence why an extra second was added.
         Time.timeScale = 0f; // This starts the game PAUSED!
         timeRemaining = countdownDuration; // This sets the time remaining, to what we set the time to start at in the Inspector.
-
         cinematicBarsAnimator = cinematicBars.GetComponent<Animator>();
     }
 

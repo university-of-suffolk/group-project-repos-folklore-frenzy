@@ -14,7 +14,7 @@ public class TimerCountdown : MonoBehaviour
     private float CurrentTime;
 
     // This boolean is used to determine when the round is over.
-    private bool roundOver = false;
+    public bool roundOver = false;
 
     // This is used to display the game over screen.
     public GameObject gameOverUI;
