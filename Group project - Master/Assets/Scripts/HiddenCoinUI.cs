@@ -11,6 +11,11 @@ public class HiddenCoinUI : MonoBehaviour
 
     public Image[] coins;
 
+    private void Start()
+    {
+        coinsFound = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {

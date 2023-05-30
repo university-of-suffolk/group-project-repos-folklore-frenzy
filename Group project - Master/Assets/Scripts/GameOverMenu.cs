@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameOverMenu : MonoBehaviour
 {
+    public GameObject gameOverScreenFirstButton;
 
     private void Start()
     {
@@ -39,6 +41,9 @@ public class GameOverMenu : MonoBehaviour
         {
             Time.timeScale = 0f; // Pauses the game.
             gameObject.SetActive(true); // Shows the menu UI.
+
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(gameOverScreenFirstButton);
         }
         else
         {

@@ -30,8 +30,6 @@ public class HumanPins : MonoBehaviour
                 audioSource.PlayOneShot(strikeSFX);
                 audioSource.PlayOneShot(screamSFX);
 
-                other.GetComponent<PlayerMove>().Speed -= PinStrength;
-
                 StartCoroutine(StrikeCooldown());
             }
         }
