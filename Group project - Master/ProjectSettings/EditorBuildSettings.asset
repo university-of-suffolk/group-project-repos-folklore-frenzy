@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EnvironmentTesting.unity
     guid: e53981a87a333f74582d835baf2c8232
+  - enabled: 1
+    path: Assets/Scenes/FolkloreInfo.unity
+    guid: 43f8feb513f827044aa4dd5083e22fc1
   m_configObjects: {}
