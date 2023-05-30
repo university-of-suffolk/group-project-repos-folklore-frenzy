@@ -27,21 +27,6 @@ public class PlayerMove : MonoBehaviour
 
     public float gravityScale;
 
-    //[Header("Collision")]
-    //[SerializeField] bool collided;
-    ////offsets
-    //[SerializeField] Vector3 frontLeftOffset;
-    //[SerializeField] Vector3 frontMiddleOffset;
-    //[SerializeField] Vector3 frontRightOffset;
-    //[SerializeField] Vector3 leftFrontOffset;
-    //[SerializeField] Vector3 leftBackOffset;
-    //[SerializeField] Vector3 rightFrontOffset;
-    //[SerializeField] Vector3 rightBackOffset;
-    //[SerializeField] Vector3 leftCornerOffset;
-    //[SerializeField] Vector3 rightCornerOffset;
-    ////length
-    //[SerializeField] float collisionRange;
-
     [Header("Turn controls")]
     [SerializeField] float turnSens = 10f;
     [HideInInspector] public Vector3 MovementDirection;
@@ -109,131 +94,9 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Raycasts on front and sides to detect collision (has the side effect of not ping ponging between walls as much)
-        //if (!collided) 
-        //{ 
-        //    collided = Physics.Raycast(transform.position + frontLeftOffset, transform.forward, collisionRange, building); 
-        //    if (collided)
-        //    {
-        //        reboundDirection = Vector3.forward * -1f;
-        //        Debug.Log("Front left");
-        //    }
-        //}
-        //if (!collided)
-        //{
-        //    collided = Physics.Raycast(transform.position + frontMiddleOffset, transform.forward, collisionRange, building);
-        //    if (collided)
-        //    {
-        //        reboundDirection = Vector3.forward * -1f;
-        //        Debug.Log("Front mid");
-        //    }
-        //}
-        //if (!collided)
-        //{ 
-        //    collided = Physics.Raycast(transform.position + frontRightOffset, transform.forward, collisionRange, building);
-        //    if (collided)
-        //    {
-        //        reboundDirection = Vector3.forward * -1f;
-        //        Debug.Log("Front right");
-        //    }
-        //}
-        //if (!collided) 
-        //{ 
-        //    collided = Physics.Raycast(transform.position + leftFrontOffset, transform.right * -1, collisionRange, building);
-        //    if (collided)
-        //    {
-        //        reboundDirection = Vector3.right;
-        //        Debug.Log("left front");
-        //    }
-        //}
-        //if (!collided) 
-        //{ 
-        //    collided = Physics.Raycast(transform.position + leftBackOffset, transform.right * -1, collisionRange, building);
-        //    if (collided)
-        //    {
-        //        reboundDirection = Vector3.right;
-        //        Debug.Log("left back");
-        //    }
-        //}
-        //if (!collided) 
-        //{ 
-        //    collided = Physics.Raycast(transform.position + rightFrontOffset, transform.right, collisionRange, building);
-        //    if (collided)
-        //    {
-        //        reboundDirection = Vector3.left;
-        //        Debug.Log("right front");
-        //    }
-        //}
-        //if (!collided)
-        //{ 
-        //    collided = Physics.Raycast(transform.position + rightBackOffset, transform.right, collisionRange, building);
-        //    if (collided)
-        //    {
-        //        reboundDirection = Vector3.left;
-        //        Debug.Log("right back");
-        //    }
-        //}
-        //if (!collided) 
-        //{
-        //    collided = Physics.Raycast(transform.position + leftCornerOffset, (transform.right * -1) + transform.forward, collisionRange, building);
-        //    if (collided)
-        //    {
-        //        reboundDirection = Vector3.right + (Vector3.back);
-        //        Debug.Log("left corner");
-        //    }
-        //}
-        //if (!collided) 
-        //{ 
-        //    collided = Physics.Raycast(transform.position + rightCornerOffset, transform.right + transform.forward, collisionRange, building);
-        //    if (collided)
-        //    {
-        //        reboundDirection = (Vector3.left) + (Vector3.left);
-        //        Debug.Log("right corner");
-        //    }
-        //}
-        //if (collided)
-        //{
-        //    hitBuilding = true;
-        //    collided = false;
-        //}
 
-        //RampCheck
-        //isRamp = Physics.Raycast(transform.position + Vector3.down * rampCheckOffset, transform.forward, rampCheckdistance, ramp);
-        //if (isRamp)
-        //{
-        //    rb.constraints = RigidbodyConstraints.None;
-        //    Debug.Log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ RAMP");
-        //}
-        //else if (!isRamp && transform.rotation.x == 0 && transform.rotation.z == 0)
-        //{
-        //    Debug.Log("###################################################### FREEZING ROTATION");
-        //    rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-        //}
-
-        //if (transform.eulerAngles.x > 40 )
-        //{
-        //    Debug.Log("clamp x rotation positive");
-        //    transform.eulerAngles = new Vector3(40, transform.rotation.y, transform.rotation.z);
-        //}
-        //if (transform.eulerAngles.x < -40)
-        //{
-        //    Debug.Log("clamp x rotation negative");
-        //    transform.eulerAngles = new Vector3(-40, transform.rotation.y, transform.rotation.z);
-        //}
-        //if (transform.eulerAngles.z > 40)
-        //{
-        //    Debug.Log("clamp z rotation positive");
-        //    transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, 40);
-        //}
-        //if (transform.eulerAngles.z < -40)
-        //{
-        //    Debug.Log("clamp z rotation negative");
-        //    transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, -40);
-        //}
-
-
-            //Add relative downwards force to replace gravity
-            rb.AddForce(transform.up * -1 * gravityScale, ForceMode.Acceleration);
+        //Add relative downwards force to replace gravity
+        rb.AddForce(transform.up * -1 * gravityScale, ForceMode.Acceleration);
 
         // change rotation of cart when going left or right
         if (Horizontal != 0 && !freezeTurn)
@@ -305,7 +168,7 @@ public class PlayerMove : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeRotationX;
             rb.constraints = RigidbodyConstraints.FreezeRotationZ;
 
-            reboundDirection = /*gameObject.transform.position - collision.gameObject.transform.position;*/ transform.forward * -1;
+            reboundDirection = transform.forward * -1;
             //reboundDirection.y = 0f;
             hitBuilding = true;
 

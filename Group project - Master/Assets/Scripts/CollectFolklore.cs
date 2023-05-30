@@ -37,8 +37,8 @@ public class CollectFolklore : MonoBehaviour
         else
         {
             // 10* Possible Locations (10 Empty Child GameObjects)
-            print("RANDOMISE CUSTOMER SPAWN " + SpawnFolklore.currentFolklore);
-            if (SpawnFolklore.currentFolklore == 1)
+            print("RANDOMISE CUSTOMER SPAWN " + SpawnFolklore.currentFolkloreLocation);
+            if (SpawnFolklore.currentFolkloreLocation == 1)
             {
                 //1 or 8
                 int RandPos = Random.Range(0, 2);
@@ -46,7 +46,7 @@ public class CollectFolklore : MonoBehaviour
                 else { randomCustomerPos = 7; }
                 Debug.Log("POSITION 1: " + RandPos + "," + randomCustomerPos);
             }
-            else if (SpawnFolklore.currentFolklore == 2)
+            else if (SpawnFolklore.currentFolkloreLocation == 2)
             {
                 //5 or 6
                 int RandPos = Random.Range(0, 2);
@@ -54,7 +54,7 @@ public class CollectFolklore : MonoBehaviour
                 else { randomCustomerPos = 5; }
                 Debug.Log("POSITION 2: " + RandPos + "," + randomCustomerPos);
             }
-            else if (SpawnFolklore.currentFolklore == 3)
+            else if (SpawnFolklore.currentFolkloreLocation == 3)
             {
                 // 7 and 5
                 int RandPos = Random.Range(0, 2);
@@ -62,7 +62,7 @@ public class CollectFolklore : MonoBehaviour
                 else { randomCustomerPos = 4; }
                 Debug.Log("POSITION 3: " + RandPos + "," + randomCustomerPos);
             }
-            else if (SpawnFolklore.currentFolklore == 4)
+            else if (SpawnFolklore.currentFolkloreLocation == 4)
             {
                 //2 7 4
                 int RandPos = Random.Range(0, 3);
@@ -71,7 +71,7 @@ public class CollectFolklore : MonoBehaviour
                 else { randomCustomerPos = 3; }
                 Debug.Log("POSITION 4: " + RandPos + "," + randomCustomerPos);
             }
-            else if (SpawnFolklore.currentFolklore == 5)
+            else if (SpawnFolklore.currentFolkloreLocation == 5)
             {
                 //2 3 9
                 int RandPos = Random.Range(0, 3);
@@ -80,15 +80,15 @@ public class CollectFolklore : MonoBehaviour
                 else { randomCustomerPos = 8; }
                 Debug.Log("POSITION 5: " + RandPos + "," + randomCustomerPos);
             }
-            else if (SpawnFolklore.currentFolklore == 6)
+            else if (SpawnFolklore.currentFolkloreLocation == 6)
             {
-                //3 10
+                //3 9
                 int RandPos = Random.Range(0, 2);
-                if (RandPos == 1) { randomCustomerPos = 2; }
+                if (RandPos == 1) { randomCustomerPos = 3; }
                 else { randomCustomerPos = 9; }
                 Debug.Log("POSITION 6: " + RandPos + "," + randomCustomerPos);
             }
-            else if (SpawnFolklore.currentFolklore == 7)
+            else if (SpawnFolklore.currentFolkloreLocation == 7)
             {
                 // 1 6 8
                 int RandPos = Random.Range(0, 3);
@@ -97,7 +97,7 @@ public class CollectFolklore : MonoBehaviour
                 else { randomCustomerPos = 7; }
                 Debug.Log("POSITION 7: " + RandPos + "," + randomCustomerPos);
             }
-            else if (SpawnFolklore.currentFolklore == 8)
+            else if (SpawnFolklore.currentFolkloreLocation == 8)
             {
                 // 10 6
                 int RandPos = Random.Range(0, 2);
@@ -105,7 +105,7 @@ public class CollectFolklore : MonoBehaviour
                 else { randomCustomerPos = 9; }
                 Debug.Log("POSITION 8: " + RandPos + "," + randomCustomerPos);
             }
-            else if (SpawnFolklore.currentFolklore == 9)
+            else if (SpawnFolklore.currentFolkloreLocation == 9)
             {
                 // 5 9
                 int RandPos = Random.Range(0, 2);
@@ -113,7 +113,7 @@ public class CollectFolklore : MonoBehaviour
                 else { randomCustomerPos = 8; }
                 Debug.Log("POSITION 9: " + RandPos + "," + randomCustomerPos);
             }
-            else if (SpawnFolklore.currentFolklore == 10)
+            else if (SpawnFolklore.currentFolkloreLocation == 10)
             {
                 //5 10
                 int RandPos = Random.Range(0, 2);
@@ -126,43 +126,6 @@ public class CollectFolklore : MonoBehaviour
         // This takes the random number, and finds the selected array from the Empty GameObjects inside of the customerSpawnLocations GameObject (e.g., The highest Child GameObject is represented as [0]). The default spawn is then selected from the array.
         defaultSpawn = customerSpawnLocations.transform.GetChild(randomCustomerPos);
         print("Spawn: " + defaultSpawn);
-
-        // get random which folklore it is based on the % chance  ( Generate a 1 - 100 number)
-        randomFolklore = Random.Range(1, 101);
-
-        // Set Folklore //
-
-        if (randomFolklore < 51)
-        {
-            // Is Kuchisake Onna (Slit-Mouthed Woman) with value of 200
-            newfolkloreIndex = 1f;
-        }
-        else if (randomFolklore < 71)
-        {
-            // Is Aka Manto (Red Cloak) with value of 400
-            newfolkloreIndex = 2f;
-        }
-        else if (randomFolklore < 86)
-        {
-            // Is Yuki Onna (Snow Woman) with value of 800
-            newfolkloreIndex = 3f;
-        }
-        else if (randomFolklore < 96)
-        {
-            // Is Gashadokuro (Starving Skeleton) with value of 1600
-            newfolkloreIndex = 4f;
-        }
-        else
-        {
-            // Is Oni (Demon) with value of 3200
-            newfolkloreIndex = 5f;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void OnTriggerEnter(Collider other)
@@ -170,10 +133,7 @@ public class CollectFolklore : MonoBehaviour
         // if the player enters the trigger of the folklore check if the player already has a folklore before proceeding.
         if (other.CompareTag("Player") && !PlayerInventory.hasFolklore)
         {
-            // store the value of the folklore that the player has in the inventory
             PlayerInventory.hasFolklore = true;
-            // store the index of the folklore that the player has in the inventory
-            PlayerInventory.folkloreIndex = newfolkloreIndex;
 
             //Instantiate the customer.
             Instantiate(Customer, defaultSpawn);
