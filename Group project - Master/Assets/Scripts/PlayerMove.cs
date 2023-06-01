@@ -40,7 +40,8 @@ public class PlayerMove : MonoBehaviour
     float Horizontal;
     float Vertical;
     float newRotation;
-    [SerializeField] KeyCode driftKey = KeyCode.Space;
+    [SerializeField] KeyCode driftKey = KeyCode.LeftShift;
+    [SerializeField] KeyCode alternativeDrift = KeyCode.Space;
 
     bool scoreChanged = false;
 
@@ -130,7 +131,7 @@ public class PlayerMove : MonoBehaviour
             newRotation = Horizontal * turnSens * Time.fixedDeltaTime;
             transform.Rotate(0, newRotation, 0, Space.World);
             // change the velocity to be in the direction of travel so it wont drift
-            if (!Input.GetKey(driftKey))
+            if (!Input.GetKey(driftKey) && !Input.GetKey(alternativeDrift))
             {
                 Debug.Log("Not Drifting");
                 rb.angularDrag = 0f;
