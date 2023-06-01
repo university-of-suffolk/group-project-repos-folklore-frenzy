@@ -38,6 +38,7 @@ public class PlayerMove : MonoBehaviour
     float Horizontal;
     float Vertical;
     float newRotation;
+    [SerializeField] KeyCode driftKey = KeyCode.Space;
 
     bool scoreChanged = false;
 
@@ -107,8 +108,11 @@ public class PlayerMove : MonoBehaviour
             newRotation = Horizontal * turnSens * Time.fixedDeltaTime;
             transform.Rotate(0, newRotation, 0, Space.World);
             // change the velocity to be in the direction of travel so it wont drift
-            Vector3 newVelocity = rb.velocity.magnitude * transform.forward;
-            rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
+            if (!Input.GetKey(driftKey))
+            {
+                Vector3 newVelocity = rb.velocity.magnitude * transform.forward;
+                rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
+            }
         }
 
         if (!hitBuilding)
@@ -160,7 +164,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Building") || collision.gameObject.CompareTag("Pedestrian"))
+        if (collision.gameObject.CompareTag("Building"))
         {
             Debug.Log("Collide with obstacle");
 
