@@ -329,8 +329,8 @@ GameObject:
   - component: {fileID: 6940339976634341162}
   - component: {fileID: 1797917213679401460}
   - component: {fileID: 2028046975712687226}
-  - component: {fileID: 2401688194475170145}
   - component: {fileID: 7843637937389215501}
+  - component: {fileID: 2401688194475170145}
   m_Layer: 0
   m_Name: Cart
   m_TagString: Untagged
@@ -453,7 +453,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -535,6 +535,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7843637937389215501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4819675984800385134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e62af084e176374cac56277c5e143f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxFOV: 120
+  minFOV: 60
+  speedlineParticles: {fileID: 0}
+  speedlinesWindSFX: {fileID: 8300000, guid: 627681a312501394293790965a40feb2, type: 3}
+  audioSource: {fileID: 2028046975712687226}
 --- !u!114 &2401688194475170145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,6 +571,9 @@ MonoBehaviour:
   ramp:
     serializedVersion: 2
     m_Bits: 0
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
   Speed: 10
   maxSpeed: 30
   minSpeed: 15
@@ -564,25 +584,8 @@ MonoBehaviour:
   gravityScale: 30
   turnSens: 75
   MovementDirection: {x: 0, y: 0, z: 0}
-  rampCheckOffset: 0
-  rampCheckdistance: 0
-  isRamp: 0
+  driftKey: 32
   vignette: {fileID: 0}
---- !u!114 &7843637937389215501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4819675984800385134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e62af084e176374cac56277c5e143f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxFOV: 120
-  minFOV: 60
-  speedlineParticles: {fileID: 0}
 --- !u!1 &6574897157230148532
 GameObject:
   m_ObjectHideFlags: 0
