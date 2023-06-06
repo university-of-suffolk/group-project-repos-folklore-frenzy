@@ -11,8 +11,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] LayerMask building;
     [SerializeField] LayerMask ramp;
     bool hitBuilding;
-    bool distanceFromGround;
-    [SerializeField] LayerMask ground;
 
     [Header("Speed Controls")]
     [HideInInspector] public float Speed;
@@ -32,16 +30,14 @@ public class PlayerMove : MonoBehaviour
     [Header("Turn controls")]
     [SerializeField] float turnSens = 10f;
     [HideInInspector] public Vector3 MovementDirection;
-    //[SerializeField] float rampCheckOffset;
-    //[SerializeField] float rampCheckdistance;
-    //[SerializeField] bool isRamp;
+    [SerializeField] float rampCheckOffset;
+    [SerializeField] float rampCheckdistance;
+    [SerializeField] bool isRamp;
 
     [Header("Input")]
     float Horizontal;
     float Vertical;
     float newRotation;
-    [SerializeField] KeyCode driftKey = KeyCode.LeftShift;
-    [SerializeField] KeyCode alternativeDrift = KeyCode.Space;
 
     bool scoreChanged = false;
 
@@ -60,26 +56,6 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if its flying off, go back to the ground
-        if (!(distanceFromGround = Physics.Raycast(transform.position, Vector3.down, 20f, ground)))
-        {
-            Debug.Log("Too high");
-            rb.angularVelocity = Vector3.zero;
-            transform.eulerAngles = new Vector3(0, transform.rotation.y, 0);
-
-            transform.position = new Vector3(41, 11, 41);
-        }
-        // if stuck in over rotation, reset to default
-        if (Mathf.Abs(transform.rotation.x) > 45 || Mathf.Abs(transform.rotation.z) > 45)
-        {
-            Debug.Log("Too rotated");
-            rb.angularVelocity = Vector3.zero;
-            transform.eulerAngles = new Vector3(0, transform.rotation.y, 0);
-
-            transform.position = new Vector3(41, 11, 41);
-        }
-
-
         // Only get the player input when the game is not paused. (I.e., the player can't move while paused)
         if (Time.timeScale == 1f)
         {
@@ -131,18 +107,8 @@ public class PlayerMove : MonoBehaviour
             newRotation = Horizontal * turnSens * Time.fixedDeltaTime;
             transform.Rotate(0, newRotation, 0, Space.World);
             // change the velocity to be in the direction of travel so it wont drift
-            if (!Input.GetKey(driftKey) && !Input.GetKey(alternativeDrift))
-            {
-                Debug.Log("Not Drifting");
-                rb.angularDrag = 0f;
-                Vector3 newVelocity = rb.velocity.magnitude * transform.forward;
-                rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
-            }
-            else
-            {
-                Debug.Log("Drifting");
-                rb.angularDrag = 300;
-            }
+            Vector3 newVelocity = rb.velocity.magnitude * transform.forward;
+            rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
         }
 
         if (!hitBuilding)
@@ -166,10 +132,10 @@ public class PlayerMove : MonoBehaviour
             freezeTurn = true;
             vignetteAnim.SetTrigger("Fade"); // Displays red vignette on damage
             rb.drag = 0f;
-            Speed = 15; // lower speed to give the player a chance to correct their mistake without bouncing them off the same wall repeatedly.
+            Speed = 5; // lower speed to give the player a chance to correct their mistake without bouncing them off the same wall repeatedly.
 
             //rb.velocity = Vector3.zero;
-            rb.AddForce( reboundDirection.normalized * pushbackForce * /*500f **/ Time.fixedDeltaTime, ForceMode.Impulse); // applies force backwards to get players unstuck.
+            rb.AddForce( reboundDirection.normalized * pushbackForce * 500f * Time.fixedDeltaTime, ForceMode.Force); // applies force backwards to get players unstuck.
 
             // Decrease score on collision.
             if (!scoreChanged)
@@ -192,34 +158,28 @@ public class PlayerMove : MonoBehaviour
         scoreChanged = false; // Player will lose money again on next collision.
     }
 
-    public void OnCollisionEnter(Collision collision)
-    { 
-        if (collision.gameObject.CompareTag("Building"))
+    /*private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Building") || collision.gameObject.CompareTag("Pedestrian"))
         {
             Debug.Log("Collide with obstacle");
 
             rb.constraints = RigidbodyConstraints.FreezeRotationY;
             rb.constraints = RigidbodyConstraints.FreezeRotationX;
             rb.constraints = RigidbodyConstraints.FreezeRotationZ;
-            // set velocity or do the rebound addforce on the rb
-            reboundDirection = /*Vector3.Reflect(rb.velocity,*/(rb.velocity/4) + collision.contacts[0].normal/*)*/;
 
-            rb.velocity = reboundDirection;
-
-            //Debug.Log("collisionPoint: " + collisionPoint);
-
-            //reboundDirection = /*collisionPoint - transform.position*/ transform.forward * -1;
+            reboundDirection = transform.forward * -1;
             //reboundDirection.y = 0f;
             hitBuilding = true;
 
         }
-    }
+    }*/
 
     private void OnDrawGizmos()
     {
-        //Gizmos.color = Color.red;
+        Gizmos.color = Color.red;
 
-        //Gizmos.DrawLine(transform.position + Vector3.down * rampCheckOffset, transform.position + Vector3.down * rampCheckOffset + transform.forward * rampCheckdistance);
+        Gizmos.DrawLine(transform.position + Vector3.down * rampCheckOffset, transform.position + Vector3.down * rampCheckOffset + transform.forward * rampCheckdistance);
 
         //Gizmos.DrawLine(transform.position + frontLeftOffset, transform.position + frontLeftOffset + transform.forward * collisionRange);
         //Gizmos.DrawLine(transform.position + frontMiddleOffset, transform.position + frontMiddleOffset + transform.forward * collisionRange);

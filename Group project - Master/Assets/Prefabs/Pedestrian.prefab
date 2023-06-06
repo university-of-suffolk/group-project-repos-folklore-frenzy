@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6927299559786924216}
   - component: {fileID: 6927299559786924220}
   - component: {fileID: 6927299559786924223}
+  - component: {fileID: 8400047044505523402}
+  - component: {fileID: 4614552821732185467}
   m_Layer: 7
   m_Name: Pedestrian
   m_TagString: Pedestrian
@@ -141,3 +143,35 @@ MonoBehaviour:
   buildings:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &8400047044505523402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927299559786924217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c96fe34a460354b9e6884a943ae088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoxBody: {fileID: 4614552821732185467}
+  ThrustForce: 500
+  LaunchForce: 500
+  LaunchSpeed: 500
+--- !u!54 &4614552821732185467
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927299559786924217}
+  serializedVersion: 2
+  m_Mass: 0.1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
