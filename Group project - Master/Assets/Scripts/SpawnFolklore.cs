@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpawnFolklore : MonoBehaviour
 {
-    [SerializeField]GameObject Folklore;
+    GameObject Folklore;
 
     [Header("Folklore")]
     [SerializeField] GameObject kuchisakeOnna;
@@ -40,31 +40,31 @@ public class SpawnFolklore : MonoBehaviour
         if (randomFolklore < 51)
         {
             // Is Kuchisake Onna (Slit-Mouthed Woman) with value of 200
-            //Folklore = kuchisakeOnna;
+            Folklore = kuchisakeOnna;
             PlayerInventory.folkloreIndex = 1;
         }
         else if (randomFolklore < 71)
         {
             // Is Aka Manto (Red Cloak) with value of 400
-            //Folklore = akaManto;
+            Folklore = akaManto;
             PlayerInventory.folkloreIndex = 2;
         }
         else if (randomFolklore < 86)
         {
             // Is Yuki Onna (Snow Woman) with value of 800
-            //Folklore = yukiOnna;
+            Folklore = yukiOnna;
             PlayerInventory.folkloreIndex = 3;
         }
         else if (randomFolklore < 96)
         {
             // Is Gashadokuro (Starving Skeleton) with value of 1600
-            //Folklore = gashadokuro;
+            Folklore = gashadokuro;
             PlayerInventory.folkloreIndex = 4;
         }
         else
         {
             // Is Oni (Demon) with value of 3200
-            //Folklore = oni;
+            Folklore = oni;
             PlayerInventory.folkloreIndex = 5;
         }
 

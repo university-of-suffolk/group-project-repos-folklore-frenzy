@@ -9,6 +9,13 @@ public class CollectFolklore : MonoBehaviour
     // check if the player is near
     // delete when the player collects it
 
+    [SerializeField] MeshFilter cartFolkloreMesh;
+    [SerializeField] Mesh kuchisakeOnna;
+    [SerializeField] Mesh akaManto;
+    [SerializeField] Mesh yukiOnna;
+    [SerializeField] Mesh gashadokuro;
+    [SerializeField] Mesh oni;
+
     [SerializeField] float randomFolklore;
     [SerializeField] float newfolkloreIndex;
     public GameObject Customer;
@@ -143,6 +150,27 @@ public class CollectFolklore : MonoBehaviour
 
             //Show folklore inside cart!
             cartFolklore = other.transform.Find("FolkloreCartObject").gameObject;
+            cartFolkloreMesh = cartFolklore.GetComponent<MeshFilter>();
+
+            switch (PlayerInventory.folkloreIndex)
+            {
+                case 1:
+                    cartFolkloreMesh.mesh = kuchisakeOnna;
+                    break;
+                case 2:
+                    cartFolkloreMesh.mesh = akaManto;
+                    break;
+                case 3:
+                    cartFolkloreMesh.mesh = yukiOnna;
+                    break;
+                case 4:
+                    cartFolkloreMesh.mesh = gashadokuro;
+                    break;
+                case 5:
+                    cartFolkloreMesh.mesh = oni;
+                    break;
+            }
+
             cartFolklore.SetActive(true);
             Destroy(gameObject);
         }
