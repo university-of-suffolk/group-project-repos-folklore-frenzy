@@ -19362,6 +19362,10 @@ PrefabInstance:
       propertyPath: rightCornerOffset.z
       value: 0.53
       objectReference: {fileID: 0}
+    - target: {fileID: 2401688194475170145, guid: 98ddd0a378118634a8813c52c93e19eb, type: 3}
+      propertyPath: forwardFailsafeDistance
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4718950730728932427, guid: 98ddd0a378118634a8813c52c93e19eb, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 6359
@@ -22467,9 +22471,15 @@ MonoBehaviour:
   freezeTurn: 0
   reboundDirection: {x: 0, y: 0, z: 0}
   gravityScale: 50
+  rotationControl: 0
+  knockBackCoolDown: 0
+  knockBackOverride: 0
+  flatwall: 0
+  forwardFailsafeDistance: 0
   turnSens: 125
   MovementDirection: {x: 0, y: 0, z: 0}
   driftKey: 32
+  alternativeDrift: 32
   vignette: {fileID: 0}
 --- !u!114 &1351850132
 MonoBehaviour:
@@ -31529,12 +31539,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6607db25fe838f544813f9195f4df75b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Folklore: {fileID: 4243437606273844716, guid: 3f2b192c90990874d84cec98e624dbff, type: 3}
-  kuchisakeOnna: {fileID: 0}
-  akaManto: {fileID: 0}
-  yukiOnna: {fileID: 0}
-  gashadokuro: {fileID: 0}
-  oni: {fileID: 0}
+  kuchisakeOnna: {fileID: 2343652421224674254, guid: 0025f602705838247a6dfa491b70a74b, type: 3}
+  akaManto: {fileID: 8283466204008200793, guid: 146cdd4b5dc0cff4b8d4650671f089ed, type: 3}
+  yukiOnna: {fileID: 8770847851863695882, guid: 3b9d22b1aa5826442a9e7d47415de133, type: 3}
+  gashadokuro: {fileID: 3715883459503482002, guid: dd5d57cc50ae41d43b27f2db40933009, type: 3}
+  oni: {fileID: 2417596482458323532, guid: e2e0f9cf50dd57f428fd79fde9b46f33, type: 3}
 --- !u!4 &1971634771
 Transform:
   m_ObjectHideFlags: 0

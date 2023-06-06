@@ -29,6 +29,13 @@ public class PlayerMove : MonoBehaviour
 
     public float gravityScale;
 
+    [SerializeField] bool rotationControl;
+    [SerializeField] bool knockBackCoolDown;
+    [SerializeField] bool knockBackOverride;
+    [SerializeField] bool flatwall;
+
+    [SerializeField] float forwardFailsafeDistance;
+
     [Header("Turn controls")]
     [SerializeField] float turnSens = 10f;
     [HideInInspector] public Vector3 MovementDirection;
@@ -60,6 +67,22 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // prevent getting stuck on a flat wall
+        if ((flatwall = Physics.Raycast(transform.position, transform.forward, forwardFailsafeDistance, building)))
+        {
+            knockBackOverride = true;
+        }
+
+        //raycast local down to detect overrotation
+        if (!(rotationControl = Physics.Raycast(transform.position, transform.up * -1f, 20f, ground)))
+        {
+            Debug.Log("Over Rotation");
+            rb.angularVelocity = Vector3.zero;
+            transform.eulerAngles = new Vector3(0, transform.rotation.y, 0);
+
+            transform.position = new Vector3(0, 1.029998f, -0.2f);
+        }
+
         // if its flying off, go back to the ground
         if (!(distanceFromGround = Physics.Raycast(transform.position, Vector3.down, 20f, ground)))
         {
@@ -67,18 +90,8 @@ public class PlayerMove : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
             transform.eulerAngles = new Vector3(0, transform.rotation.y, 0);
 
-            transform.position = new Vector3(41, 11, 41);
+            transform.position = new Vector3(0, 1.029998f, -0.2f);
         }
-        // if stuck in over rotation, reset to default
-        if (Mathf.Abs(transform.rotation.x) > 45 || Mathf.Abs(transform.rotation.z) > 45)
-        {
-            Debug.Log("Too rotated");
-            rb.angularVelocity = Vector3.zero;
-            transform.eulerAngles = new Vector3(0, transform.rotation.y, 0);
-
-            transform.position = new Vector3(41, 11, 41);
-        }
-
 
         // Only get the player input when the game is not paused. (I.e., the player can't move while paused)
         if (Time.timeScale == 1f)
@@ -145,23 +158,10 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if (!hitBuilding)
+        if ((hitBuilding && !knockBackCoolDown) || knockBackOverride) // turning off foward force, to cleanly apply the bouceback when the player collides with an obstacle.
         {
-            // set the maxSpeed
-            if (rb.velocity.magnitude < Speed) // if going fowards
-            {
-                //Debug.Log("Applying forward force");
-                rb.drag = 0f; // remove the drag so the player can affectivly accelerate
-                AppliedSpeed = Speed * 500;
-                rb.AddForce(MovementDirection * AppliedSpeed * Time.fixedDeltaTime, ForceMode.Force); // apply the forwards force.
-            }
-            else if (rb.velocity.magnitude > Speed) // if slowing down apply drag to do it gradually.
-            {
-                rb.drag = 5f;
-            }
-        }
-        else // turning off foward force, to cleanly apply the bouceback when the player collides with an obstacle.
-        {
+            knockBackCoolDown = true;
+            knockBackOverride = false;
             //print("collided with building");
             freezeTurn = true;
             vignetteAnim.SetTrigger("Fade"); // Displays red vignette on damage
@@ -180,7 +180,29 @@ public class PlayerMove : MonoBehaviour
 
             hitBuilding = false;
 
+            Invoke("KnockBackCoolDown", 1f);
             Invoke("unfreezeTurn", 0.35f); // unfreeze the rotate (avoiding the player jittering against the obstacle)
+        }
+        else
+        {
+            // set the maxSpeed
+            if (rb.velocity.magnitude < Speed) // if going fowards
+            {
+                //Debug.Log("Applying forward force");
+                rb.drag = 0f; // remove the drag so the player can affectivly accelerate
+                AppliedSpeed = Speed * 500;
+                rb.AddForce(MovementDirection * AppliedSpeed * Time.fixedDeltaTime, ForceMode.Force); // apply the forwards force.
+            }
+            else if (rb.velocity.magnitude > Speed) // if slowing down apply drag to do it gradually.
+            {
+                rb.drag = 5f;
+            }
+
+            //if (rb.velocity.magnitude < 2)
+            //{
+            //    knockBackOverride = true;
+            //    print("OVERRIDE" + rb.velocity.magnitude);
+            //}
         }
     }
 
@@ -190,6 +212,12 @@ public class PlayerMove : MonoBehaviour
         freezeTurn = false;
         rb.constraints = RigidbodyConstraints.None;
         scoreChanged = false; // Player will lose money again on next collision.
+    }
+
+    private void KnockBackCoolDown()
+    {
+
+        knockBackCoolDown = false;
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -217,18 +245,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //Gizmos.color = Color.red;
-
-        //Gizmos.DrawLine(transform.position + Vector3.down * rampCheckOffset, transform.position + Vector3.down * rampCheckOffset + transform.forward * rampCheckdistance);
-
-        //Gizmos.DrawLine(transform.position + frontLeftOffset, transform.position + frontLeftOffset + transform.forward * collisionRange);
-        //Gizmos.DrawLine(transform.position + frontMiddleOffset, transform.position + frontMiddleOffset + transform.forward * collisionRange);
-        //Gizmos.DrawLine(transform.position + frontRightOffset, transform.position + frontRightOffset + transform.forward * collisionRange);
-        //Gizmos.DrawLine(transform.position + leftFrontOffset, transform.position + leftFrontOffset + transform.right * -1 * collisionRange);
-        //Gizmos.DrawLine(transform.position + leftBackOffset, transform.position + leftBackOffset + transform.right * -1 * collisionRange);
-        //Gizmos.DrawLine(transform.position + rightFrontOffset, transform.position + rightFrontOffset + transform.right * collisionRange);
-        //Gizmos.DrawLine(transform.position + rightBackOffset, transform.position + rightBackOffset + transform.right * collisionRange);
-        //Gizmos.DrawLine(transform.position + leftCornerOffset, transform.position + leftCornerOffset + (transform.right * -1) + transform.forward * collisionRange);
-        //Gizmos.DrawLine(transform.position + rightCornerOffset, transform.position + rightCornerOffset + transform.right + transform.forward * collisionRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * forwardFailsafeDistance);
     }
 }
