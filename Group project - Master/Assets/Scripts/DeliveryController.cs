@@ -28,6 +28,8 @@ public class DeliveryController : MonoBehaviour
         {
             Debug.Log("Collided player in range");
             // check if have the folklore, in time
+            Debug.Log("DELIVERY TRIGGER: Findex = " + PlayerInventory.folkloreIndex + ". Oindex = " + orderIndex);
+
             if (PlayerInventory.folkloreIndex == orderIndex && !FolkloreTimerCountdown.deliveryFailed)
             {
                 //if there is, add money + other events
@@ -60,13 +62,13 @@ public class DeliveryController : MonoBehaviour
 
                 // destroy customer and cart folklore after transaction
 
-                cartFolklore = other.transform.Find("FolkloreCartObject").gameObject;
-                cartFolklore.SetActive(false);
+                cartFolklore = GameObject.FindGameObjectWithTag("CartFolklore");
+                Destroy(cartFolklore);
 
                 other.GetComponent<AudioSource>().pitch = 1f;
                 other.GetComponent<AudioSource>().PlayOneShot(DeliverySFX); // Play delivery sound from the player!
 
-                Destroy(transform.parent.gameObject);
+                Destroy(transform.parent.gameObject);  
                 folkloreSpawner.GetComponent<SpawnFolklore>().Spawn(); // Spawn new folklore!
             }
             else if (FolkloreTimerCountdown.deliveryFailed) // The delivery has been made over the time limit.

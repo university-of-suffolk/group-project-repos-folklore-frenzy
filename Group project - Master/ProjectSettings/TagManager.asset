@@ -10,6 +10,8 @@ TagManager:
   - Customer
   - Box
   - ramp
+  - CartFolklore
+  - cartSpawn
   layers:
   - Default
   - TransparentFX

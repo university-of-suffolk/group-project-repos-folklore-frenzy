@@ -9,13 +9,21 @@ public class CollectFolklore : MonoBehaviour
     // check if the player is near
     // delete when the player collects it
 
+    [SerializeField] GameObject kuchisakeOnna;
+    [SerializeField] GameObject akaManto;
+    [SerializeField] GameObject yukiOnna;
+    [SerializeField] GameObject gashadokuro;
+    [SerializeField] GameObject oni;
+
+    GameObject cart;
+
     [SerializeField] float randomFolklore;
     [SerializeField] float newfolkloreIndex;
     public GameObject Customer;
     GameObject customerSpawnLocations;
     Transform defaultSpawn;
 
-    GameObject cartFolklore; // This is the folklore we see inside the cart!
+    //GameObject cartFolklore; // This is the folklore we see inside the cart!
 
     public static bool tutorialCustomer = true;
     int randomCustomerPos;
@@ -25,6 +33,8 @@ public class CollectFolklore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cart = GameObject.FindGameObjectWithTag("cartSpawn");
+
         // Random Customer Spawn Locations //
 
         customerSpawnLocations = GameObject.Find("CustomerSpawnLocations"); // Finds the GameObject storing customer spawn locations.
@@ -142,8 +152,34 @@ public class CollectFolklore : MonoBehaviour
             other.GetComponent<AudioSource>().PlayOneShot(pickUpSFX); // Play pickup sound from the player!
 
             //Show folklore inside cart!
-            cartFolklore = other.transform.Find("FolkloreCartObject").gameObject;
-            cartFolklore.SetActive(true);
+            //cartFolklore = other.transform.Find("FolkloreCartObject").gameObject;
+
+            GameObject cartFolklore;
+            switch (PlayerInventory.folkloreIndex)
+            {
+                case 1:
+                    cartFolklore = Instantiate(kuchisakeOnna , cart.transform);
+                    cartFolklore.transform.SetParent(cart.transform);
+                    break;
+                case 2:
+                    cartFolklore = Instantiate(akaManto, cart.transform);
+                    cartFolklore.transform.SetParent(cart.transform);
+                    break;
+                case 3:
+                    cartFolklore = Instantiate(yukiOnna, cart.transform);
+                    cartFolklore.transform.SetParent(cart.transform);
+                    break;
+                case 4:
+                    cartFolklore = Instantiate(gashadokuro, cart.transform);
+                    cartFolklore.transform.SetParent(cart.transform);
+                    break;
+                case 5:
+                    cartFolklore = Instantiate(oni, cart.transform);
+                    cartFolklore.transform.SetParent(cart.transform);
+                    break;
+            }
+
+            //cartFolklore.SetActive(true);
             Destroy(gameObject);
         }
     }

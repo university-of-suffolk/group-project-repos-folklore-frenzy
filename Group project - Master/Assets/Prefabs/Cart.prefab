@@ -354,6 +354,7 @@ Transform:
   - {fileID: 354062139820405489}
   - {fileID: 7272427382704937750}
   - {fileID: 484858607960249224}
+  - {fileID: 4076446243122565833}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -550,8 +551,6 @@ MonoBehaviour:
   maxFOV: 120
   minFOV: 60
   speedlineParticles: {fileID: 0}
-  speedlinesWindSFX: {fileID: 8300000, guid: 627681a312501394293790965a40feb2, type: 3}
-  audioSource: {fileID: 2028046975712687226}
 --- !u!114 &2401688194475170145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,10 +581,47 @@ MonoBehaviour:
   freezeTurn: 0
   reboundDirection: {x: 0, y: 0, z: 0}
   gravityScale: 30
+  rotationControl: 0
+  knockBackCoolDown: 0
+  knockBackOverride: 0
+  flatwall: 0
+  forwardFailsafeDistance: 0
   turnSens: 75
   MovementDirection: {x: 0, y: 0, z: 0}
   driftKey: 32
+  alternativeDrift: 32
   vignette: {fileID: 0}
+--- !u!1 &4884340372142597085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4076446243122565833}
+  m_Layer: 0
+  m_Name: CartFolklorePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4076446243122565833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4884340372142597085}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.740277, y: -27.273092, z: 19.81856}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5307841157620978388}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6574897157230148532
 GameObject:
   m_ObjectHideFlags: 0
